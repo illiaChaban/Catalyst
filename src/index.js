@@ -1,17 +1,55 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import {connect, Provider} from 'react-redux';
+import {createStore} from 'redux';
+// import registerServiceWorker from './registerServiceWorker';
 
-class App extends Component {
-    render() {
-      return (
-        <div className="App">
-        Working
-        </div>
-      );
+let initialState = {
+    users: [],
+    goals: []
+};
+
+let reducer = (state = initialState, action) => {
+    switch(action.type) {
+        case 'UPDATE_FEED':
+        console.log('working')
+        return {...state}
+
+        default:
+            return state;
     }
-  }
+}
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+let store = createStore(reducer, 
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())    
+
+    let Body = () => {   
+
+        return(
+             <div>
+             Working
+         </div>
+        )
+     }
+
+let TopLevel = () => 
+    <Provider store={store}>
+        <ConnectScreen />
+    </Provider>
+
+let mapStateToProps = (state) => {
+    return {state: state}
+    }
+  
+let mapDispatchToProps = (dispatch) => {
+    return {dispatch: dispatch}
+  };
+  
+let ConnectScreen = connect(
+    mapStateToProps,
+    mapDispatchToProps
+    )(Body);
+
+ReactDOM.render(<TopLevel />, document.getElementById('root'));
+// registerServiceWorker();

@@ -10,6 +10,7 @@ let ScreenDumb = () => {
     )
  }
 
+
 // let mapStateToProps = (state) => {
 //     return {state: state}
 //     }
@@ -25,6 +26,6 @@ let ScreenDumb = () => {
 
 let Screen = connect(
     state => ({state})
-)(ScreenDumb);
+)(ScreenDumb)
 
 export default Screen;

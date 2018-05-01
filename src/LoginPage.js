@@ -27,9 +27,9 @@ handleClick = e => {
             'content-type': 'application/json'
         }
     })
-    .then(res => console.log('response',res))
+    // .then(res => console.log('response',res))
     .then(res => {
-        if (res.token) {
+        if (res.status===200) {
         localStorage.getItem('token', "res.token")
         this.setState({isLoggedIn:true})
             if(this.state.isLoggedIn===true) {
@@ -42,10 +42,6 @@ handleClick = e => {
     .catch(error => {
         console.log(error);
       });
-      ///if okay then login and add web token to local storage
-      //then set login to true
-      //set login to true and send user to main homepage
-      //if false, return failed login attempt
 }
 
 render() {

@@ -24,7 +24,7 @@ handleClick = e => {
         body: JSON.stringify(payload),
         method: 'POST',
         headers: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/json'
         }
     })
     // .then(res => console.log('response',res))

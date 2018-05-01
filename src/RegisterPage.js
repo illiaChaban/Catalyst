@@ -20,7 +20,7 @@ fetchOnClick = event => {
     let baseUrl = 'http://localhost:5000/register'
     let payload = {
         'email': this.state.email,
-        'jwtpassword': this.state.password,
+        'passw': this.state.password,
         'username': this.state.username,
         'avatar': this.state.avatar
     }

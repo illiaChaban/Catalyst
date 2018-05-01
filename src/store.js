@@ -1,8 +1,12 @@
 import {createStore} from 'redux';
 
 let initialState = {
-    users: [],
-    goals: []
+    user: {
+        username: 'illia',
+        userid: '1111'
+    },
+    goals: [],
+    friends: [],
 };
 
 let reducer = (state = initialState, action) => {

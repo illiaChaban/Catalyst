@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {connect } from 'react-redux';
 
 class CreateGoalPage extends Component  {
     constructor(props){
         super(props);
         this.state = {
+            user: this.props.user,
             title: '',
             description: '',
             deadline: ''
@@ -15,6 +17,7 @@ class CreateGoalPage extends Component  {
         let post = {
             method: 'POST',
             body: JSON.stringify({
+                userid: this.state.user.userid,
                 title: this.state.title,
                 description: this.state.description,
                 deadline: this.state.deadline
@@ -27,6 +30,7 @@ class CreateGoalPage extends Component  {
     }
 
     render (){
+        
         return (
             <div>
                 <h1>Goal title:</h1>
@@ -42,4 +46,6 @@ class CreateGoalPage extends Component  {
     
 }
 
-export default CreateGoalPage;
+export default connect(
+    state => ({ user: state.user})
+)(CreateGoalPage);

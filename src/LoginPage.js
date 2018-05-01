@@ -57,7 +57,7 @@ render() {
             onChange = {(event) => this.setState({password:event.target.value})}/></p>
             <p><input type="submit" value="Log in" 
             onClick={(event) => this.handleClick(event)}/></p>
-            <p><button>Register</button></p>
+            <p><button onClick={() => this.props.history.push('/register')}>Register</button></p>
             {this.state.isLoggedIn===false ? <div>Failed Login, please try again.</div> : <div></div>}
         </form>
     </div>

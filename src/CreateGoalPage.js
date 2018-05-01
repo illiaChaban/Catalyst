@@ -11,6 +11,7 @@ class CreateGoalPage extends Component  {
             title: '',
             description: '',
             deadline: '',
+            punishment: '',
             month: '',
             day: '',
             year: ''
@@ -50,6 +51,9 @@ class CreateGoalPage extends Component  {
                     <label>/</label>
                     <input onChange={(event) => this.setState({ day:event.target.value }) } type='number' min="2018" max="2200" required /> 
                 </div>
+                <h1>Punisment:</h1>
+                <input onChange={(event) => this.setState({ punishment:event.target.value }) } type="text" required/>
+                <br />
                 <button onClick={this.handleSubmit}>Submit Goal</button>
             </div>
         )

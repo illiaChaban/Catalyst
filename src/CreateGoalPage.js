@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
+// import DeadlineDate from './DeadlineDate';
+
 
 class CreateGoalPage extends Component  {
     constructor(props){
@@ -8,7 +10,10 @@ class CreateGoalPage extends Component  {
             user: this.props.user,
             title: '',
             description: '',
-            deadline: ''
+            deadline: '',
+            month: '',
+            day: '',
+            year: ''
         }
     }
 
@@ -34,11 +39,17 @@ class CreateGoalPage extends Component  {
         return (
             <div>
                 <h1>Goal title:</h1>
-                <input onChange={(event) => this.setState({ title:event.target.value }) } type="text"/>
+                <input onChange={(event) => this.setState({ title:event.target.value }) } type="text" required/>
                 <h1>Goal description:</h1>
-                <input onChange={(event) => this.setState({ description:event.target.value }) } type="text"/>
+                <input onChange={(event) => this.setState({ description:event.target.value }) } type="text" required/>
                 <h1>Goal deadline:</h1>
-                <input onChange={(event) => this.setState({ deadline:event.target.value }) } type="text"/>
+                <div className="date">
+                    <input onChange={(event) => this.setState({ month:event.target.value }) } type='number' min="1" max="31" required /> 
+                    <label>/</label>
+                    <input onChange={(event) => this.setState({ day:event.target.value }) } type='number' min="1" max="12" required />
+                    <label>/</label>
+                    <input onChange={(event) => this.setState({ day:event.target.value }) } type='number' min="2018" max="2200" required /> 
+                </div>
                 <button onClick={this.handleSubmit}>Submit Goal</button>
             </div>
         )

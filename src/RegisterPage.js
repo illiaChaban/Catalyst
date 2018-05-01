@@ -26,7 +26,10 @@ fetchOnClick = event => {
     }
     fetch(baseUrl, {
         body: JSON.stringify(payload),
-        method: 'POST'
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        }
     })
     .then(res => console.log('response',res))
     .catch(error => {

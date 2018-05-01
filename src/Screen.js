@@ -19,20 +19,6 @@ let ScreenDumb = () => {
     )
  }
 
-
-// let mapStateToProps = (state) => {
-//     return {state: state}
-//     }
-  
-// let mapDispatchToProps = (dispatch) => {
-//     return {dispatch: dispatch}
-//   };
-  
-// let Screen = connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//     )(ScreenDumb);
-
 let Screen = connect(
     state => ({state})
 )(ScreenDumb)

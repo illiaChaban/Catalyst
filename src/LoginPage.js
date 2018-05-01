@@ -42,6 +42,7 @@ handleClick = e => {
     .catch(error => {
         console.log(error);
       });
+
 }
 
 render() {
@@ -54,10 +55,10 @@ render() {
             onChange = {(event) => this.setState({email:event.target.value})}/></p>
             <p><input type="password" placeholder="Password" 
             onChange = {(event) => this.setState({password:event.target.value})}/></p>
-            <p><input type="submit" value="Log in" 
-            onClick={(event) => this.handleClick(event)}/></p>
-            <p><button onClick={() => this.props.history.push('/register')}>Register</button></p>
-            {this.state.isLoggedIn===false ? <div>Failed Login, please try again.</div> : <div></div>}
+            <input type="submit" value="Log in" 
+            onClick={(event) => this.handleClick(event)}/>
+            <button onClick={() => this.props.history.push('/register')}>Register</button>
+            {this.state.isLoggedIn===false ? <div><p>Failed Login, please try again.</p></div> : <div></div>}
         </form>
     </div>
     )

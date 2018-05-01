@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import LoginPage from './LoginPage';
 import CreateGoalPage from './CreateGoalPage';
+import RegisterPage from './RegisterPage';
 
 let DumbHomepage = () =>
 <div>Dumb Homepage</div>
@@ -15,6 +16,7 @@ let ScreenDumb = () => {
                     <Route path="/" exact component={DumbHomepage} />
                     <Route path="/login" exact component={LoginPage} />
                     <Route path='/create-goal' component={CreateGoalPage} />
+                    <Route path='/register' exact component={RegisterPage} />
                 </Switch>
             </Router>
         </div>

@@ -3,7 +3,7 @@ import {createStore} from 'redux';
 let initialState = {
     user: {
         username: 'illia',
-        userid: '1111'
+        userid: '1'
     },
     goals: [],
     friends: [],

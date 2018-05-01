@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class CreateGoalPage extends Component  {
     constructor(props){
@@ -12,18 +11,18 @@ class CreateGoalPage extends Component  {
     }
 
     handleSubmit = () => {
+        let url = 'http://localhost:5000/goals';
         let post = {
             method: 'POST',
-            url: 'http://localhost:5000/goals',
-            body: {
+            body: JSON.stringify({
                 title: this.state.title,
                 description: this.state.description,
                 deadline: this.state.deadline
-            }
+            })
 
         };
 
-        axios(post)
+        fetch(url, post)
         .then(data => console.log(data))
     }
 

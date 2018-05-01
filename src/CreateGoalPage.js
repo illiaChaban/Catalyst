@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import {connect } from 'react-redux';
 
 class CreateGoalPage extends Component  {
     constructor(props){
         super(props);
         this.state = {
+            user: this.props.user,
             title: '',
             description: '',
             deadline: ''
@@ -12,22 +13,24 @@ class CreateGoalPage extends Component  {
     }
 
     handleSubmit = () => {
+        let url = 'http://localhost:5000/goals';
         let post = {
             method: 'POST',
-            url: 'http://localhost:5000/goals',
-            body: {
+            body: JSON.stringify({
+                userid: this.state.user.userid,
                 title: this.state.title,
                 description: this.state.description,
                 deadline: this.state.deadline
-            }
+            })
 
         };
 
-        axios(post)
+        fetch(url, post)
         .then(data => console.log(data))
     }
 
     render (){
+        
         return (
             <div>
                 <h1>Goal title:</h1>
@@ -43,4 +46,6 @@ class CreateGoalPage extends Component  {
     
 }
 
-export default CreateGoalPage;
+export default connect(
+    state => ({ user: state.user})
+)(CreateGoalPage);

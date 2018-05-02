@@ -31,8 +31,8 @@ handleClick = e => {
     .then(res => { 
         console.log(res)
         if (res.status===200) {
-            res.json().then( res => {
-                localStorage.setItem('jwt', res.jwt )
+            res.text().then( res => {
+                localStorage.setItem('jwt', res )
                 this.setState({isLoggedIn:true})
                 this.props.history.push('/')
             })

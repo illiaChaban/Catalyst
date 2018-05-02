@@ -28,15 +28,16 @@ handleClick = e => {
         }
     })
     // .then(res => console.log('response',res))
-    .then(res => {
+    .then(res => { 
+        console.log(res)
         if (res.status===200) {
-        localStorage.getItem('token', "res.token")
-        this.setState({isLoggedIn:true})
-            if(this.state.isLoggedIn===true) {
+            res.json().then( res => {
+                localStorage.setItem('jwt', res.jwt )
+                this.setState({isLoggedIn:true})
                 this.props.history.push('/')
-            } else {
-                return this.setState({isLoggedIn:false})
-            }
+            })
+        } else {
+            this.setState({isLoggedIn:false})
         }
     })
     .catch(error => {

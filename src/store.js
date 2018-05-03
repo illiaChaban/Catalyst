@@ -1,6 +1,6 @@
 import {createStore} from 'redux';
-import { updateUserInfoReducer } from './actions/reducers';
-import { updateUserInfo } from './actions/dispatch';
+import { updateUserInfoReducer, updateFriendsReducer } from './actions/reducers';
+import { updateUserInfo, updateFriends } from './actions/dispatch';
 
 let initialState = {
     user: {
@@ -14,6 +14,7 @@ let initialState = {
 
 let reducers = {
     [updateUserInfo]: updateUserInfoReducer, 
+    [updateFriends]: updateFriendsReducer,
 }
 
 let reducer = (oldState = initialState, action) => {

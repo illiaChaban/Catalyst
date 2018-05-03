@@ -48,20 +48,28 @@ class LoginPage extends Component {
     render() {
         return (
             <div className="loginpage-master-container">
-                <div className="loginpage-logo-container">
-                </div>
                 <div className="loginpage-form-container">
-                    <h2 className="login-header">Log in</h2>
+                    <ul>
+                        <li>MAKE GOALS.</li>
+                        <li>DO WORK.</li>
+                        <li>OR GET PUNISHED.</li>
+                    </ul>
                     <form onSubmit={this.handleSubmit} className="login-container">
-                        <p><input type="email" placeholder="Email"
-                            onChange={(event) => this.setState({ email: event.target.value })} /></p>
-                        <p><input type="password" placeholder="Password"
-                            onChange={(event) => this.setState({ password: event.target.value })} /></p>
-                        <input type="submit" value="Log in"
-                            onClick={(event) => this.handleClick(event)} />
-                        <button onClick={() => this.props.history.push('/register')}>Register</button>
-                        {this.state.isLoggedIn === false ? <div><p>Failed Login, please try again.</p></div> : <div></div>}
+                        <ul>
+                            <li><h2 className="login-header">Log in</h2></li>
+                            <li><input type="email" placeholder="Email"
+                                onChange={(event) => this.setState({ email: event.target.value })} /></li>
+                            <li><input type="password" placeholder="Password"
+                                onChange={(event) => this.setState({ password: event.target.value })} /></li>
+                            <li><button type="submit" 
+                                onClick={(event) => this.handleClick(event)}>Log in</button>
+                                <button onClick={() => this.props.history.push('/register')}>Register</button></li>
+                                {this.state.isLoggedIn === false ? <div><p>Failed Login, please try again.</p></div> : <div></div>}
+                        </ul>
                     </form>
+                </div>
+                <div className="loginpage-logo-container">
+                    <img className="logo" alt="catalyst" src="http://i.imgur.com/ewWJs9l.jpg" />
                 </div>
             </div>
         )

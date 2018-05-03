@@ -40,22 +40,29 @@ fetchOnClick = event => {
 render() {
 
         return(
-    <div className="loginpage-container">        
-        <h2 className="login-header">Register</h2>
-        <form onSubmit={this.handleSubmit} className="login-container">
-            <p><input type="text" placeholder="Username" 
-            onChange = {(event) => this.setState({username:event.target.value})}/></p>
-            <p><input type="email" placeholder="Email" 
-            onChange = {(event) => this.setState({email:event.target.value})}/></p>
-            <p><input type="password" placeholder="Password" 
-            onChange = {(event) => this.setState({password:event.target.value})}/></p>
-            <p><input type="text" placeholder="Image URL" 
-            onChange = {(event) => this.setState({avatar:event.target.value})}/></p>
-            <button
-            onClick={() => this.props.history.push('/login')}>Cancel</button>
-            <input type="submit" value="Submit" 
-            onClick={(event) => this.fetchOnClick(event)}/>
-        </form>
+        <div className="loginpage-master-container">
+            <div className="loginpage-form-container">
+                <form onSubmit={this.handleSubmit} className="login-container">
+                    <ul>
+                        <li><h2 className="login-header">Register</h2></li>
+                        <li><input type="text" placeholder="Username" 
+                            onChange = {(event) => this.setState({username:event.target.value})}/></li>
+                        <li><input type="email" placeholder="Email" 
+                            onChange = {(event) => this.setState({email:event.target.value})}/></li>
+                        <li><input type="password" placeholder="Password" 
+                            onChange = {(event) => this.setState({password:event.target.value})}/></li>
+                        <li><input type="text" placeholder="Image URL" 
+                            onChange = {(event) => this.setState({avatar:event.target.value})}/></li>
+                        <li><button
+                            onClick={() => this.props.history.push('/login')}>Cancel</button>
+                            <button type="submit"
+                            onClick={(event) => this.fetchOnClick(event)}>Submit</button></li>
+                    </ul>
+                </form>
+            </div>
+            <div className="loginpage-logo-container">
+                <img className="logo" alt="catalyst" src="http://i.imgur.com/ewWJs9l.jpg" />
+            </div>
     </div>
     )
 }

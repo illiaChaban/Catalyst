@@ -1,22 +1,21 @@
 import React from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import LoginPage from './LoginPage';
-import CreateGoalPage from './CreateGoalPage';
-import RegisterPage from './RegisterPage';
-import Feed from './Feed';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import InitialRouter from './InitialRouter';
+import LoginPage from './LoginPage';
+import RegisterPage from './RegisterPage';
+import MainScreen from './MainScreen';
+
 
 let Screen = () => {   
     return(
-        <div>
+        <div className='route-container'>
             <Router>
-                <Switch>
-                    <Route path="/" exact component={InitialRouter}/>
-                    <Route path="/login" exact component={LoginPage} /> 
-                    <Route path='/feed' component={Feed}/>
-                    <Route path='/create-goal' component={CreateGoalPage} />
-                    <Route path='/register' exact component={RegisterPage} />
-                </Switch>
+                <div>
+                <Route exact path="/" component={InitialRouter}/>
+                <Route path="/login" exact component={LoginPage} />
+                <Route path="/register" exact component={RegisterPage} />
+                <Route path='/main' component={MainScreen}/>     
+                </div>
             </Router>
         </div>
     )

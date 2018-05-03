@@ -14,6 +14,11 @@ class InitialRouterDumb extends React.Component{
     componentDidMount() {
         this.getUserInfo();
     }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.loggedIn !== this.state.loggedIn) {
+            this.getUserInfo();
+        }
+    }
 
     async getUserInfo() {
         let { dispatch } = this.props;
@@ -40,12 +45,13 @@ class InitialRouterDumb extends React.Component{
         let { loggedIn } = this.state;
         return (
             <div>
-                {loggedIn === true && <Redirect to='/feed'/>}
-                {loggedIn === false && <Redirect to='/login'/>}
+                {loggedIn === true && <Redirect to="/main"/>} 
+                {loggedIn === false && <Redirect to='/login'/>} 
             </div>
         )
     }
 }
+
 
 let InitialRouter = connect(
     state => ({ username: state.user.username})

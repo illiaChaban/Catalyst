@@ -33,7 +33,7 @@ class LoginPage extends Component {
                     res.text().then(res => {
                         localStorage.setItem('jwt', res)
                         this.setState({ isLoggedIn: true })
-                        this.props.history.push('/feed')
+                        this.props.history.push('/main')
                     })
                 } else {
                     this.setState({ isLoggedIn: false })
@@ -47,18 +47,22 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div className="loginpage-container">
-                <h2 className="login-header">Log in</h2>
-                <form onSubmit={this.handleSubmit} className="login-container">
-                    <p><input type="email" placeholder="Email"
-                        onChange={(event) => this.setState({ email: event.target.value })} /></p>
-                    <p><input type="password" placeholder="Password"
-                        onChange={(event) => this.setState({ password: event.target.value })} /></p>
-                    <input type="submit" value="Log in"
-                        onClick={(event) => this.handleClick(event)} />
-                    <button onClick={() => this.props.history.push('/register')}>Register</button>
-                    {this.state.isLoggedIn === false ? <div><p>Failed Login, please try again.</p></div> : <div></div>}
-                </form>
+            <div className="loginpage-master-container">
+                <div className="loginpage-logo-container">
+                </div>
+                <div className="loginpage-form-container">
+                    <h2 className="login-header">Log in</h2>
+                    <form onSubmit={this.handleSubmit} className="login-container">
+                        <p><input type="email" placeholder="Email"
+                            onChange={(event) => this.setState({ email: event.target.value })} /></p>
+                        <p><input type="password" placeholder="Password"
+                            onChange={(event) => this.setState({ password: event.target.value })} /></p>
+                        <input type="submit" value="Log in"
+                            onClick={(event) => this.handleClick(event)} />
+                        <button onClick={() => this.props.history.push('/register')}>Register</button>
+                        {this.state.isLoggedIn === false ? <div><p>Failed Login, please try again.</p></div> : <div></div>}
+                    </form>
+                </div>
             </div>
         )
     }

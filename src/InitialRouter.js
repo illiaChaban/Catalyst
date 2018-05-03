@@ -14,11 +14,6 @@ class InitialRouterDumb extends React.Component{
     componentDidMount() {
         this.getUserInfo();
     }
-    componentDidUpdate(prevProps, prevState) {
-        if(prevState.loggedIn !== this.state.loggedIn) {
-            this.getUserInfo();
-        }
-    }
 
     async getUserInfo() {
         let { dispatch } = this.props;
@@ -33,6 +28,7 @@ class InitialRouterDumb extends React.Component{
 
             if (response.status === 200) {
                 let user = await response.json();
+
                 updateUserInfo({dispatch, user })
                 this.setState({loggedIn: true})
             } else {

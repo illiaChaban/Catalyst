@@ -24,11 +24,11 @@ class ProfilePage extends Component  {
     componentDidMount = async() => {
         let fetchData = await fetch('http://localhost:5000/getCheckins')
         let data = await fetchData.json();
-            console.log(data)
+            // console.log(data)
             this.setState({ recentCheckIns: data })
         let fetchData2 = await fetch('http://localhost:5000/getGoals')    
         let data2 = await fetchData2.json();
-            console.log(data2)
+            // console.log(data2)
             this.setState({ recentGoals: data2 })
         
     }
@@ -47,7 +47,7 @@ class ProfilePage extends Component  {
         };
 
         fetch(url, post)
-        .then(data => console.log(data))
+        // .then(data => console.log(data))
     }
 
     saveRenderCheckins = () => {
@@ -77,9 +77,9 @@ class ProfilePage extends Component  {
                 <input type="file" onChange={(event) => {
                     let file = event.target.files[0];
                     let url = URL.createObjectURL(file);
-                    console.log(file) 
+                    // console.log(file) 
                     this.setState({ image: url }) }} />
-                {console.log(this.state.image)}
+                {/* {console.log(this.state.image)} */}
                 <img alt="profile-img" src={this.state.image} />
                 <hr />
                 <div>

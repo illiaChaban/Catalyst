@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
+
 
 class RegisterPage extends Component {
     constructor(props ){
@@ -31,7 +33,15 @@ fetchOnClick = event => {
             'content-type': 'application/json'
         }
     })
-    .then(res => console.log('response',res))
+    .then(res => {
+        console.log('response',res)
+        if (res.status === 200) {
+            res.text().then(res => {
+                localStorage.setItem('jwt', res)
+                this.setState({isLoggedIn: true})
+            })
+        }
+    })
     .catch(error => {
         console.log(error);
       });
@@ -60,6 +70,7 @@ render() {
                     </ul>
                 </form>
             </div>
+            {this.state.isLoggedIn && <Redirect to='/main/feed'/>}
             <div className="loginpage-logo-container">
                 <img className="logo" alt="catalyst" src="http://i.imgur.com/ewWJs9l.jpg" />
             </div>

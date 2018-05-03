@@ -1,32 +1,29 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
+import InitialRouter from './InitialRouter';
 import LoginPage from './LoginPage';
 import CreateGoalPage from './CreateGoalPage';
 import ProfilePage from './ProfilePage';
+
 import RegisterPage from './RegisterPage';
+import MainScreen from './MainScreen';
 
-let DumbHomepage = () =>
-<div>Dumb Homepage</div>
 
-let ScreenDumb = () => {   
+let Screen = () => {   
     return(
-        <div>
+        <div className='route-container'>
             <Router>
-                <Switch>
-                    <Route path="/" exact component={DumbHomepage} />
+                <div>
+                    <Route exact path="/" component={InitialRouter}/>
                     <Route path="/login" exact component={LoginPage} />
+                    <Route path="/register" exact component={RegisterPage} />
+                    <Route path='/main' component={MainScreen}/>     
                     <Route path='/create-goal' component={CreateGoalPage} />
                     <Route path='/profile-page' component={ProfilePage} />
-                    <Route path='/register' exact component={RegisterPage} />
-                </Switch>
+                </div>
             </Router>
         </div>
     )
- }
-
-let Screen = connect(
-    state => ({state})
-)(ScreenDumb)
+}
 
 export default Screen;

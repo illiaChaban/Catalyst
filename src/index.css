@@ -13,13 +13,80 @@ body {
   
 }
 
+ul,li {
+  list-style: none;
+}
+
 h2 {
   padding: 0;
   margin: 0;
 }
 
+
 .route-container {
-  background-color: blue;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: blue; */
+}
+
+.loginpage-master-container {
+  width: 100vw;
+  height: 100vh;
+  display:flex;
+  flex-direction: column;
+}
+
+.loginpage-logo-container {
+  background-color: #ff6e6e;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginpage-form-container {
+  background-color: white;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginpage-form-container ul li {
+  color: #919191;
+  font-size: 150%;
+}
+
+.loginpage-form-container ul li input {
+  border: 2px solid #ff6e6e;
+  border-radius: 5%;
+  font-size: 65%;
+}
+
+.loginpage-form-container ul li button {
+  background-color: #ff6e6e;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 2px solid #ff6e6e;
+
+}
+
+.loginpage-form-container ul li button:hover {
+  background-color: white;
+  color: #ff6e6e;
+  border: 2px solid #ff6e6e;
+}
+
+.logo {
+ width: 300px;
 }
 
 .profile-part {
@@ -66,4 +133,15 @@ h2 {
   font-size: 0.6em;
   text-align: right;
   color: gray;
+}
+
+@media  (min-width: 500px) {
+
+  .loginpage-master-container {
+    flex-direction: row-reverse;
+  }
+
+  .loginpage-form-container {
+    align-self: center;
+  }
 }

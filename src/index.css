@@ -21,6 +21,49 @@ h2 {
 .route-container {
   background-color: blue;
 }
-.loginpage-master-container {
-  /* background-color: pink; */
+
+.profile-part {
+  display: inline-block;    
+}
+.profile-part img{
+  width: 70px;
+  height: 70px;
+} 
+
+.goal-checkin-block {
+  display: block;
+  /* width: 250px; */
+  width: 100%;
+  
+}
+.checkin {
+  display: flex;
+
+}
+
+.username {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.deadline {
+  font-size: 0.6em;
+  /* font-style: italic; */
+  text-align: right;
+  color: gray;
+}
+
+.goalname {
+  font-size: 0.8em;
+}
+.goal-part {
+  background-color: rgb(252, 167, 167);
+  padding: 2px;
+  margin-bottom: 5px;
+}
+
+.checkin-created {
+  font-size: 0.6em;
+  text-align: right;
+  color: gray;
 }

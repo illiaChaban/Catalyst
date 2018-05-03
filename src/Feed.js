@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { arraysOfObjAreEqual } from './lib/arraysOfObjAreEqual';
 import { fetchFriends } from './actions/fetch';
+import CheckIn from './CheckIn';
 
 
 class Feed extends React.Component{
@@ -37,8 +38,11 @@ class Feed extends React.Component{
     render() {
         // console.log('rendering')
         // console.log(this.state)
+        let { friends_checkins } = this.state;
         return(
-            <div>Feed</div>
+            <div>
+                {friends_checkins.map( (checkin, i) => <CheckIn key={i} checkin={checkin}/>)}
+            </div>
         )
     }
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateUserInfo } from './actions/dispatch';
+import { fetchMe } from './actions/fetch';
+
 
 class InitialRouterDumb extends React.Component{
     constructor(props){
@@ -16,15 +18,9 @@ class InitialRouterDumb extends React.Component{
     }
 
     async getUserInfo() {
-        let { dispatch } = this.props;
-        let token = localStorage.getItem('jwt');
-    
-        if (token) {
-            let response = await fetch('http://localhost:5000/user/me', {
-                headers: {
-                    authorization: token,
-                }
-            })
+        let { dispatch } = this.props;    
+        if (localStorage.jwt) {
+            let response = await fetchMe();
 
             if (response.status === 200) {
                 let user = await response.json();
@@ -41,7 +37,7 @@ class InitialRouterDumb extends React.Component{
         let { loggedIn } = this.state;
         return (
             <div>
-                {loggedIn === true && <Redirect to="/main"/>} 
+                {loggedIn === true && <Redirect to="/main/feed"/>} 
                 {loggedIn === false && <Redirect to='/login'/>} 
             </div>
         )

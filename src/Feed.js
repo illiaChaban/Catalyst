@@ -36,8 +36,6 @@ class Feed extends React.Component{
     }
 
     render() {
-        // console.log('rendering')
-        // console.log(this.state)
         let { friends_checkins } = this.state;
         return(
             <div>

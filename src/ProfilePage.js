@@ -84,7 +84,7 @@ class ProfilePage extends Component  {
                 <hr />
                 <div>
                     <h1>My personal goals</h1>
-                    <Link to='/create-goal'><img  alt="plus-icon" src={require('./plus_image_button.png')} /></Link>
+                    <Link to='/main/create-goal'><img  alt="plus-icon" src={require('./plus_image_button.png')} /></Link>
                 </div>
                 {/* List of goals */}
                 {this.saveRenderGoals()}

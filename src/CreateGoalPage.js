@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchMe } from './actions/fetch';
+import { updateUserInfo } from './actions/dispatch';
+import updateDate from './lib/updateDate';
 // import DeadlineDate from './DeadlineDate';
 
 class CreateGoalPage extends Component  {
     constructor(props){
         super(props);
         this.state = {
-            user: this.props.user,
             title: '',
             description: '',
-            deadline: '',
             punishment: '',
             month: '',
             day: '',
@@ -17,16 +18,31 @@ class CreateGoalPage extends Component  {
         }
     }
 
+    async componentDidMount() {
+        let { dispatch } = this.props;
+        let response = await fetchMe();
+
+        if (response.status === 200) {
+            let user = await response.json();
+
+            updateUserInfo({dispatch, user })
+        }
+    }
+
     handleSubmit = () => {
+        let {title, description, punishment, month, day, year} = this.state;
+        let deadline = `${year}-${updateDate(month)}-${updateDate(day)}`
+        // console.log(deadline)
+
         let url = 'http://localhost:5000/goals';
         let post = {
             method: 'POST',
             body: JSON.stringify({
-                userid: this.state.user.userid,
-                title: this.state.title,
-                description: this.state.description,
-                deadline: `${this.state.year}/${this.state.month}/${this.state.day}` ,
-                punishment: this.state.punishment
+                userid: this.props.user.userid,
+                title: title,
+                description: description,
+                deadline,
+                punishment: punishment
             })
 
         };
@@ -35,8 +51,7 @@ class CreateGoalPage extends Component  {
         .then(data => console.log(data))
     }
 
-    render (){
-        
+    render (){        
         return (
             <div>
                 <h1>Goal title:</h1>
@@ -50,14 +65,20 @@ class CreateGoalPage extends Component  {
                 <h1>Goal deadline:</h1>
                 <div className="date">
                     <input 
+                        className='date-input'
+                        placeholder='mm'
                         onChange={(event) => this.setState({ month:event.target.value }) } 
-                        type='number' min="1" max="31" required /> 
+                        type='number' min="1" max="12" required /> 
                     <label>/</label>
                     <input 
+                        className='date-input'                    
+                        placeholder='dd'
                         onChange={(event) => this.setState({ day:event.target.value }) } 
-                        type='number' min="1" max="12" required />
+                        type='number' min="1" max="31" required />
                     <label>/</label>
                     <input 
+                        className='date-input'                        
+                        placeholder='year'
                         onChange={(event) => this.setState({ year:event.target.value }) } 
                         type='number' min="2018" max="2200" required /> 
                 </div>

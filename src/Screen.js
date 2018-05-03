@@ -2,9 +2,6 @@ import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import InitialRouter from './InitialRouter';
 import LoginPage from './LoginPage';
-import CreateGoalPage from './CreateGoalPage';
-import ProfilePage from './ProfilePage';
-
 import RegisterPage from './RegisterPage';
 import MainScreen from './MainScreen';
 

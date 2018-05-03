@@ -202,3 +202,7 @@ h2, h1{
     align-self: center;
   }
 }
+
+.date-input{
+  min-width: 35px;
+}

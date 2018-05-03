@@ -11,10 +11,10 @@ let Screen = () => {
         <div className='route-container'>
             <Router>
                 <div>
-                <Route exact path="/" component={InitialRouter}/>
-                <Route path="/login" exact component={LoginPage} />
-                <Route path="/register" exact component={RegisterPage} />
-                <Route path='/main' component={MainScreen}/>     
+                    <Route exact path="/" component={InitialRouter}/>
+                    <Route path="/login" exact component={LoginPage} />
+                    <Route path="/register" exact component={RegisterPage} />
+                    <Route path='/main' component={MainScreen}/>     
                 </div>
             </Router>
         </div>

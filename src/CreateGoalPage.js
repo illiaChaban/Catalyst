@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import DeadlineDate from './DeadlineDate';
 
-
 class CreateGoalPage extends Component  {
     constructor(props){
         super(props);
@@ -26,7 +25,8 @@ class CreateGoalPage extends Component  {
                 userid: this.state.user.userid,
                 title: this.state.title,
                 description: this.state.description,
-                deadline: this.state.deadline
+                deadline: `${this.state.year}/${this.state.month}/${this.state.day}` ,
+                punishment: this.state.punishment
             })
 
         };
@@ -40,19 +40,31 @@ class CreateGoalPage extends Component  {
         return (
             <div>
                 <h1>Goal title:</h1>
-                <input onChange={(event) => this.setState({ title:event.target.value }) } type="text" required/>
+                <input 
+                    onChange={(event) => this.setState({ title:event.target.value }) } 
+                    type="text" required/>
                 <h1>Goal description:</h1>
-                <input onChange={(event) => this.setState({ description:event.target.value }) } type="text" required/>
+                <input 
+                    onChange={(event) => this.setState({ description:event.target.value }) } 
+                    type="text" required/>
                 <h1>Goal deadline:</h1>
                 <div className="date">
-                    <input onChange={(event) => this.setState({ month:event.target.value }) } type='number' min="1" max="31" required /> 
+                    <input 
+                        onChange={(event) => this.setState({ month:event.target.value }) } 
+                        type='number' min="1" max="31" required /> 
                     <label>/</label>
-                    <input onChange={(event) => this.setState({ day:event.target.value }) } type='number' min="1" max="12" required />
+                    <input 
+                        onChange={(event) => this.setState({ day:event.target.value }) } 
+                        type='number' min="1" max="12" required />
                     <label>/</label>
-                    <input onChange={(event) => this.setState({ day:event.target.value }) } type='number' min="2018" max="2200" required /> 
+                    <input 
+                        onChange={(event) => this.setState({ year:event.target.value }) } 
+                        type='number' min="2018" max="2200" required /> 
                 </div>
                 <h1>Punisment:</h1>
-                <input onChange={(event) => this.setState({ punishment:event.target.value }) } type="text" required/>
+                <input 
+                    onChange={(event) => this.setState({ punishment:event.target.value }) } 
+                    type="text" required/>
                 <br />
                 <button onClick={this.handleSubmit}>Submit Goal</button>
             </div>

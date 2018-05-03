@@ -9,6 +9,7 @@ let MainScreen = () => {
         <Switch>
             <Route exact path='/main/feed' component={Feed}/>
             <Route exact path='/main/create-goal' component={CreateGoalPage} />
+            <Route path='/main/profile-page' component={ProfilePage} />
         </Switch>
         <div className="navbar-goes-here">navbar</div>
         </div>

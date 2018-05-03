@@ -18,8 +18,6 @@ let Screen = () => {
                     <Route path="/login" exact component={LoginPage} />
                     <Route path="/register" exact component={RegisterPage} />
                     <Route path='/main' component={MainScreen}/>     
-                    <Route path='/create-goal' component={CreateGoalPage} />
-                    <Route path='/profile-page' component={ProfilePage} />
                 </div>
             </Router>
         </div>

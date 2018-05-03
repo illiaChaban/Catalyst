@@ -5,7 +5,7 @@ import CheckInPart from './CheckInPart';
 
 
 let CheckIn = ({checkin}) => {
-    console.log(checkin)
+    // console.log(checkin)
     let {
         avatar, 
         created, 
@@ -17,14 +17,16 @@ let CheckIn = ({checkin}) => {
     } = checkin;
 
     return(
-        <div>
+        <div className='checkin'>
             <ProfilePart avatar={avatar} username={username}/>
-            <GoalPart deadline={deadline} goalname={goalname}/>
-            <CheckInPart 
-                checkinImg={checkinImg} 
-                checkinDesc={checkinDesc}
-                created={created}
-            />
+            <div className='goal-checkin-block'>
+                <GoalPart deadline={deadline} goalname={goalname}/>
+                <CheckInPart 
+                    checkinImg={checkinImg} 
+                    checkinDesc={checkinDesc}
+                    created={created}
+                />
+            </div>
         </div>
     )
 }

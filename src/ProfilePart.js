@@ -1,9 +1,11 @@
 import React from 'react';
 
-let ProfilePart = ({}) => {
-
+let ProfilePart = ({avatar, username}) => {
     return (
-        <div>ProfilePart</div>
+        <div className='profile-part'>
+            <img src={avatar} alt='avatar'/>
+            <div className='username'>{username}</div>
+        </div>
     )
 }
 

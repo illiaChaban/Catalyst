@@ -56,7 +56,7 @@ class LoginPage extends Component {
                     </ul>
                     <form onSubmit={this.handleSubmit} className="login-container">
                         <ul>
-                            <li><h2 className="login-header">Log in</h2></li>
+                            <li><h2 className="login-header">SIGN IN</h2></li>
                             <li><input type="email" placeholder="Email"
                                 onChange={(event) => this.setState({ email: event.target.value })} /></li>
                             <li><input type="password" placeholder="Password"

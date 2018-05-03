@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import CreateGoalPage from './CreateGoalPage';
+import ProfilePage from './ProfilePage';
 import Feed from './Feed';
 
 let MainScreen = () => {   

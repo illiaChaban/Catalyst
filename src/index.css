@@ -65,6 +65,24 @@ h2, h1{
   text-shadow: -4px 3px 2px #c54040, -3px 5px #c74b16;
 }
 
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
+}
+
 .loginpage-master-container {
   width: 100vw;
   height: 100%;

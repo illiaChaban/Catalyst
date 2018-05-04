@@ -44,7 +44,7 @@ class FriendsList extends React.Component{
         return(
             <div className="friends-container">
             <form className="friend-form" >
-                <input type="text" placeholder="Add other users by email..." onChange={(event) => this.setState({ search:event.target.value })}/>
+                <input type="text" placeholder="Enter username..." onChange={(event) => this.setState({ search:event.target.value })}/>
                 <i onClick={this.handleSubmit} className="fas fa-search-plus fa-2x"></i>
             </form>
                 { 

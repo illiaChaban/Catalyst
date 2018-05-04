@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileCheckin from './ProfileCheckin';
+import SelectGoal from './SelectGoal';
 
 let fetchCheckins = (userId) =>
     fetch('http://localhost:5000/getMyCheckins', {
@@ -15,6 +16,7 @@ class ProfileCheckins extends React.Component{
             checkins: [],
             newCheckin: '',
             writingNewCheckin: false,
+            newChkUserId: '',
         }
     }
 
@@ -50,6 +52,10 @@ class ProfileCheckins extends React.Component{
             this.setState({newCheckin: ''})
         }
 
+        let updateNewChkUserId = (event) => {
+            console.log(event.target.value)
+        }
+
         return(
             <div className='profile-goals-part'>
                 <div className='profile-title'> 
@@ -65,6 +71,7 @@ class ProfileCheckins extends React.Component{
                             className='write-new-checkin'
                             onChange={updateNewCheckin}>
                         </input>
+                        <SelectGoal handler={updateNewChkUserId} />
                         <button
                             onClick={() => {
                                 postCheckin();

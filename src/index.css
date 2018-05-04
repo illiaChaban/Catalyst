@@ -28,15 +28,6 @@ h2, h1{
   margin: 0;
 }
 
-h3 {
-  font-weight: 200;
-  margin-top: 0;
-  text-transform: uppercase;
-  padding: 10px 30px;
-  background-color: #919191;
-  /* color: white; */
-}
-
 .route-container {
   width: 100vw;
   height: 100vh;
@@ -45,7 +36,7 @@ h3 {
 }
 
 .content-container {
-  /* background-color: turquoise; */
+  background-color: turquoise;
   height: 90vh;
   width: 100vw;
 }
@@ -204,6 +195,24 @@ h3 {
   color: gray;
 }
 
+.friend-container ul {
+  display: flex;
+  background-color: #919191;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+  justify-content: space-evenly;
+  border-bottom: 1px white solid;
+}
+
+.friend-container ul li img {
+  width: 75px;
+  height: auto;
+}
+
+.friend-container ul li span {
+  font-size: 250%;
+}
 @media  (min-width: 500px) {
 
   .loginpage-master-container {

@@ -27,8 +27,10 @@ class ProfilePage extends Component{
     }
 
     render() {
+        console.log(this.props)
         let { user } = this.props;
         // console.log(user)
+        console.log('rendering prof page')
         return (
             <div>
                 <ProfileIconPart user={user}/>
@@ -43,7 +45,10 @@ class ProfilePage extends Component{
 
 
 export default connect(
-    state => ({ user: state.user})
+    (state, props) => ({ 
+        user: state.user,
+        pageUserId: props.match.params.userid
+    })
 )(ProfilePage);
 
 

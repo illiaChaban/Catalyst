@@ -10,7 +10,6 @@ body {
   width: inherit;
   height: inherit;
   font-size: 100%;
-  
 }
 
 ul,li {
@@ -36,14 +35,14 @@ h2, h1{
 }
 
 .content-container {
-  background-color: turquoise;
+  background-color: #919191;
   height: 90vh;
   width: 100vw;
 }
 .navbar-placeholder {
   height: 200px;
   width: 100vw;
-  background-color: gold;
+  /* background-color: gold; */
 }
 
 .navbar {

@@ -79,20 +79,18 @@ class ProfilePage extends Component  {
                     let url = URL.createObjectURL(file);
                     console.log(file) 
                     this.setState({ image: url }) }} />
-                {console.log(this.state.image)}
-                <hr />
+                {/* {console.log(this.state.image)} */}
                 <div>
-                    <h1>My personal goals</h1>
+                    <h3>My personal goals</h3>
                     <Link to='/main/create-goal'><i class="fas fa-plus-circle fa-2x"></i></Link>
                 </div>
                 {/* List of goals */}
                 {this.saveRenderGoals()}
                 <div>
                 </div>
-                <hr />
                 {/* My recest checkins '+'(Add) button on the same line */}
                 <div>
-                    <h1>My recent checkins</h1>
+                    <h3>My recent checkins</h3>
                     <i class="fas fa-plus-circle fa-2x" onClick={() => this.setState({ writingCheckIn: !this.state.writingCheckIn })}></i>
                     {this.state.writingCheckIn ? <NewCheckIn handleSubmit={(text) => this.setState({ recentCheckIns: [{description: text}, ...this.state.recentCheckIns], writingCheckIn: false })} /> : null }
                 </div>

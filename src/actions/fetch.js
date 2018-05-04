@@ -16,3 +16,13 @@ fetch('http://localhost:5000/user/me', {
         authorization: localStorage.jwt,
     }
 })
+
+export let fetchGoals = (user) => {
+    return (
+        fetch('http://localhost:5000/getMyGoals', {
+            method: 'POST',
+            body: JSON.stringify(user)
+        })
+        .then( res => res.json())
+    ) 
+}

@@ -26,7 +26,8 @@ class ProfileGoals extends React.Component{
         let { goals } = this.state;
         return(
             <div className="profile-goals-part">
-                {goals && goals.map( (goal,i) => <ProfileGoal key={i} goal={goal}/>) }
+                <div className='profile-title'> My Goals: </div>
+                {goals.length && goals.map( (goal,i) => <ProfileGoal key={i} goal={goal}/>) }
             </div>
         )
     }

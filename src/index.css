@@ -195,6 +195,30 @@ h2, h1{
   color: gray;
 }
 
+.friend-container ul {
+  display: flex;
+  background-color: #919191;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+  justify-content: space-evenly;
+  border-bottom: 1px white solid;
+}
+
+.friend-container ul li img {
+  width: 75px;
+  height: auto;
+}
+
+.friend-container ul li span {
+  font-size: 250%;
+  margin-left: 4vw;
+}
+
+.friend-container ul li i {
+  margin-left: 45vw;
+}
+
 @media  (min-width: 500px) {
 
   .loginpage-master-container {

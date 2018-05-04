@@ -37,3 +37,10 @@ export let fetchUser = (userId) => {
         .then(res => res.json())
     )
 }
+
+export let fetchCheckins = (userId) =>
+    fetch('http://localhost:5000/getMyCheckins', {
+        method: 'POST',
+        body: JSON.stringify(userId)
+    })
+    .then(res => res.json());

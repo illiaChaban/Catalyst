@@ -17,12 +17,23 @@ fetch('http://localhost:5000/user/me', {
     }
 })
 
-export let fetchGoals = (user) => {
+export let fetchGoals = (userId) => {
+    // console.log(typeof userId)
     return (
         fetch('http://localhost:5000/getMyGoals', {
             method: 'POST',
-            body: JSON.stringify(user)
+            body: JSON.stringify(userId)
         })
         .then( res => res.json())
     ) 
+}
+
+export let fetchUser = (userId) => {
+    return (
+        fetch('http://localhost:5000/getUser', {
+            method: 'POST',
+            body: JSON.stringify(userId)
+        })
+        .then(res => res.json())
+    )
 }

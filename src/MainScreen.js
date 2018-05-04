@@ -12,6 +12,10 @@ let MainScreen = () => {
                 <Route exact path='/main/feed' component={Feed}/>
                 <Route exact path='/main/create-goal' component={CreateGoalPage} />
                 <Route exact path='/main/profile-page' component={ProfilePage} />
+                <Route exact path='/main/friends/:userid' render={ (props) => {
+                    let profileUserId = props.match.params.userid
+                    return <ProfilePage profileUserId={profileUserId}/>
+                }} />
             </Switch>
             </div>
             <div className="nav-placeholder"></div>

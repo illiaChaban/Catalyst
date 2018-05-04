@@ -72,7 +72,7 @@ class ProfilePage extends Component  {
         
         return (
             <div>
-                {/* personal photo and user name */}
+                <img alt="profile-img" src={this.state.image} />
                 <h1>Upload your photo:</h1>
                 <input type="file" onChange={(event) => {
                     let file = event.target.files[0];
@@ -80,21 +80,18 @@ class ProfilePage extends Component  {
                     // console.log(file) 
                     this.setState({ image: url }) }} />
                 {/* {console.log(this.state.image)} */}
-                <img alt="profile-img" src={this.state.image} />
-                <hr />
                 <div>
-                    <h1>My personal goals</h1>
-                    <Link to='/main/create-goal'><img  alt="plus-icon" src={require('./plus_image_button.png')} /></Link>
+                    <h3>My personal goals</h3>
+                    <Link to='/main/create-goal'><i className="fas fa-plus-circle fa-2x"></i></Link>
                 </div>
                 {/* List of goals */}
                 {this.saveRenderGoals()}
                 <div>
                 </div>
-                <hr />
                 {/* My recest checkins '+'(Add) button on the same line */}
                 <div>
-                    <h1>My recent checkins</h1>
-                    <img  alt="plus-icon" onClick={() => this.setState({ writingCheckIn: !this.state.writingCheckIn })} src={require('./plus_image_button.png')} />
+                    <h3>My recent checkins</h3>
+                    <i className="fas fa-plus-circle fa-2x" onClick={() => this.setState({ writingCheckIn: !this.state.writingCheckIn })}></i>
                     {this.state.writingCheckIn ? <NewCheckIn handleSubmit={(text) => this.setState({ recentCheckIns: [{description: text}, ...this.state.recentCheckIns], writingCheckIn: false })} /> : null }
                 </div>
                 {/* List of checkins */}

@@ -25,9 +25,7 @@ class FriendsPage extends Component{
         let { user } = this.props;
         // console.log(user)
         return (
-            <div>
                 <FriendsList user={user}/>
-            </div>
         )
     }
 

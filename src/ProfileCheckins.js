@@ -16,7 +16,7 @@ class ProfileCheckins extends React.Component{
             checkins: [],
             newCheckin: '',
             writingNewCheckin: false,
-            newChkUserId: '',
+            newChkGoalId: '',
         }
     }
 
@@ -45,15 +45,16 @@ class ProfileCheckins extends React.Component{
         }
 
         let postCheckin = () => {
-            console.log(this.state.newCheckin)
+            console.log(this.state.newCheckin, this.state.newChkGoalId)
         }
 
         let resetNewCheckin = () => {
             this.setState({newCheckin: ''})
         }
 
-        let updateNewChkUserId = (event) => {
-            console.log(event.target.value)
+        let updateNewChkGoalId = (event) => {
+            console.log(event.target)
+            this.setState({newChkGoalId: event.target.value})
         }
 
         return(
@@ -71,7 +72,7 @@ class ProfileCheckins extends React.Component{
                             className='write-new-checkin'
                             onChange={updateNewCheckin}>
                         </input>
-                        <SelectGoal handler={updateNewChkUserId} />
+                        <SelectGoal handler={updateNewChkGoalId} />
                         <button
                             onClick={() => {
                                 postCheckin();

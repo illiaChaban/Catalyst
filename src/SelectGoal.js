@@ -1,5 +1,7 @@
 import React from 'react';
 import Option from './Option';
+import { fetchGoals } from './actions/fetch';
+import { connect } from 'react-redux';
 
 class SelectGoal extends React.Component{
     constructor(props){
@@ -9,6 +11,11 @@ class SelectGoal extends React.Component{
         }
     }
 
+    async componentDidMount(){
+        let goals = await fetchGoals(this.props.userId);
+        this.setState({goals})
+    }
+
     render() {
         let {handler} = this.props;
         let { goals } = this.state;
@@ -16,13 +23,15 @@ class SelectGoal extends React.Component{
         return (
             <select onChange={handler}>
                 <option value=''>Choose goal</option>
-                {goals.length && goals.map( (goal, i) => {
-                    <Option goal={goal} key={i}/>
-                })}
+                {goals.length && 
+                    goals.map( (goal, i) => <Option goal={goal} key={i}/>)
+                }
             </select>
         )
     }
 }
 
 
-export default SelectGoal;
+export default connect(
+    state => ({ userId: state.user.userid})
+)(SelectGoal);

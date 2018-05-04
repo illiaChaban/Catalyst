@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileGoal from './ProfileGoal';
 import { fetchGoals } from './actions/fetch';
+import { Link } from 'react-router-dom';
 
 class ProfileGoals extends React.Component{
     constructor(props) {
@@ -13,7 +14,6 @@ class ProfileGoals extends React.Component{
     async componentDidUpdate(prevProps){
         if( prevProps !== this.props) {
             let { me, userId } = this.props
-            console.log(me, userId)
             let goals;
             // checking if it's user's profile or his friend's
             userId ? 
@@ -24,8 +24,6 @@ class ProfileGoals extends React.Component{
     }
 
     render() {
-        // console.log('rendering')
-        // console.log(this.props)
         let { goals } = this.state;
         let { me, userId } = this.props
         return(
@@ -34,7 +32,9 @@ class ProfileGoals extends React.Component{
                     <div>My Goals:</div>
                     {
                         ( !userId || userId === me.userid.toString() ) &&
-                        <div>add</div> 
+                        <Link className='white' to='/main/create-goal'>
+                            <i className="fas fa-plus-circle"></i> 
+                        </Link>
                         
                     }
                 </div>

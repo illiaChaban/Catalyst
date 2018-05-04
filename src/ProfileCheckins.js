@@ -12,7 +12,9 @@ class ProfileCheckins extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            checkins: []
+            checkins: [],
+            newCheckin: '',
+            writingNewCheckin: false,
         }
     }
 
@@ -29,17 +31,50 @@ class ProfileCheckins extends React.Component{
     }
 
     render() {
-        let {checkins} = this.state;
+        let {checkins, writingNewCheckin} = this.state;
         let { me, userId } = this.props
+
+        let toggleInput = () => {
+            this.setState({writingNewCheckin: !writingNewCheckin})
+        }
+
+        let updateNewCheckin = (event) => {
+            this.setState({newCheckin: event.target.value})
+        }
+
+        let postCheckin = () => {
+            console.log(this.state.newCheckin)
+        }
+
+        let resetNewCheckin = () => {
+            this.setState({newCheckin: ''})
+        }
+
         return(
             <div className='profile-goals-part'>
                 <div className='profile-title'> 
                     <div>Recent Checkins: </div>
                     {
                         ( !userId || userId === me.userid.toString() ) &&
-                        <button>add</button>
+                            <i onClick={toggleInput} className="fas fa-plus-circle"></i>
                     }
                 </div>
+                {writingNewCheckin &&
+                    <div> 
+                        <input 
+                            className='write-new-checkin'
+                            onChange={updateNewCheckin}>
+                        </input>
+                        <button
+                            onClick={() => {
+                                postCheckin();
+                                toggleInput();
+                                resetNewCheckin();
+                            }}
+                            >Submit
+                        </button>
+                    </div>
+                }
                 {checkins.length && checkins.map( (chk, i) => {
                     return <ProfileCheckin key={i} checkin={chk}/>
                 })}

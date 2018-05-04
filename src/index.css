@@ -35,7 +35,7 @@ h2, h1{
 }
 
 .content-container {
-  background-color: turquoise;
+  background-color: white;
   height: 100vh;
   width: 100vw;
 }
@@ -143,7 +143,56 @@ h2, h1{
  width: 300px;
 }
 
+.create-goal-container {
+  display: flex;
+  flex-direction: column;
+  /* background-color: aquamarine; */
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 
+.create-goal-container div {
+  /* background-color: aqua; */
+  max-width: 400px;
+  font-size: 200%;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.create-goal-container h3{
+  margin: 0;
+}
+
+.create-goal-container input {
+  border: 2px solid #ff6e6e;
+  border-radius: 5%;
+  font-size: 65%;
+}
+.create-goal-container button {
+  background-color: #ff6e6e;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 2px solid #ff6e6e;
+  max-width: 150px;;
+
+}
+
+.create-goal-container button:hover {
+  background-color: white;
+  color: #ff6e6e;
+  border: 2px solid #ff6e6e;
+}
 
 .profile-part {
   display: inline-block;    

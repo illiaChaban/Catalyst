@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { fetchFriendList } from './actions/fetch';
+import {Link} from 'react-router-dom';
 import Friend from './Friend';
 
 class FriendsList extends React.Component{
@@ -21,14 +21,14 @@ class FriendsList extends React.Component{
     }
 
     render() {
-        console.log('rendering')
-        console.log(this.state.friends)
+        // console.log('rendering')
+        // console.log(this.state.friends)
         let { friends } = this.state;
         return(
             <div className="friends-container">
             
                 { 
-                    friends.map( (friend,i) => <Friend key={i} friend={friend}/>) 
+                    friends.map( (friend,i) => <Link key={friend.userid} to={`/main/friends/${friend.userid}`}><Friend  friend={friend}/></Link>) 
                 } 
             </div>
         )

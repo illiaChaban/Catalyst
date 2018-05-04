@@ -212,7 +212,13 @@ h2, h1{
 
 .friend-container ul li span {
   font-size: 250%;
+  margin-left: 4vw;
 }
+
+.friend-container ul li i {
+  margin-left: 45vw;
+}
+
 @media  (min-width: 500px) {
 
   .loginpage-master-container {

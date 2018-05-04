@@ -33,7 +33,7 @@ class LoginPage extends Component {
                     res.text().then(res => {
                         localStorage.setItem('jwt', res)
                         this.setState({ isLoggedIn: true })
-                        this.props.history.push('/main')
+                        this.props.history.push('/main/feed')
                     })
                 } else {
                     this.setState({ isLoggedIn: false })

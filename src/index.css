@@ -215,3 +215,18 @@ h3 {
 .date-input{
   min-width: 35px;
 }
+
+.profile-icon-part{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile-icon-part img{
+  width: 110px;
+  height: 110px;
+} 
+
+.profile-goals-part{
+  border-top: 2px gray solid;
+}

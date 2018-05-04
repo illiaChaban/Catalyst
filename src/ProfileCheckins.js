@@ -30,9 +30,16 @@ class ProfileCheckins extends React.Component{
 
     render() {
         let {checkins} = this.state;
+        let { me, userId } = this.props
         return(
             <div className='profile-goals-part'>
-                <div className='profile-title'> Recent Checkins: </div>
+                <div className='profile-title'> 
+                    <div>Recent Checkins: </div>
+                    {
+                        ( !userId || userId === me.userid.toString() ) &&
+                        <button>add</button>
+                    }
+                </div>
                 {checkins.length && checkins.map( (chk, i) => {
                     return <ProfileCheckin key={i} checkin={chk}/>
                 })}

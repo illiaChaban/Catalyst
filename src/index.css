@@ -234,6 +234,8 @@ h2, h1{
   background-color: #ff6e6e;
   color: white;
   text-shadow: 1px 1px 1px #c54040, 1px 1px #c74b16;
+  display: flex;
+  justify-content: space-between;
   
 }
 

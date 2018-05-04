@@ -27,9 +27,17 @@ class ProfileGoals extends React.Component{
         // console.log('rendering')
         // console.log(this.props)
         let { goals } = this.state;
+        let { me, userId } = this.props
         return(
             <div className="profile-goals-part">
-                <div className='profile-title'> My Goals: </div>
+                <div className='profile-title'>
+                    <div>My Goals:</div>
+                    {
+                        ( !userId || userId === me.userid.toString() ) &&
+                        <div>add</div> 
+                        
+                    }
+                </div>
                 {goals.length && goals.map( (goal,i) => <ProfileGoal key={i} goal={goal}/>) }
             </div>
         )

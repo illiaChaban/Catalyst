@@ -7,7 +7,8 @@ class FriendsList extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            friends: []
+            friends: [],
+            search:''
         }
     }
 
@@ -26,7 +27,10 @@ class FriendsList extends React.Component{
         let { friends } = this.state;
         return(
             <div className="friends-container">
-            
+            <form className="friend-form" >
+                <input type="text" placeholder="Add other users by email..." name="search" id="searchTerm" onChange={(event) => this.setState({ search:event.target.value })}/>
+                <i className="fas fa-search-plus fa-2x"></i>
+            </form>
                 { 
                     friends.map( (friend,i) => <Link key={friend.userid} to={`/main/friends/${friend.userid}`}><Friend  friend={friend}/></Link>) 
                 } 

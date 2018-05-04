@@ -216,9 +216,31 @@ h2, h1{
 }
 
 .friend-container ul li i {
-  margin-left: 45vw;
+  margin-left: 40vw;
 }
 
+.friend-form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.friend-form input {
+ flex-basis: 90%;
+  border: .5px black solid;
+  height: 34px;
+}
+
+.friend-form i {
+  text-align: center;
+  flex-basis: 10%;
+  background-color: #ff6e6e;
+  border: .5px black solid;
+  padding: 2px;
+
+}
 @media  (min-width: 500px) {
 
   .loginpage-master-container {

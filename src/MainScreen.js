@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch, NavLink} from 'react-router-dom';
 import CreateGoalPage from './CreateGoalPage';
 import ProfilePage from './ProfilePage';
+import FriendsPage from './FriendsPage';
 import Feed from './Feed';
 
 let MainScreen = () => {   
@@ -12,10 +13,12 @@ let MainScreen = () => {
                 <Route exact path='/main/feed' component={Feed}/>
                 <Route exact path='/main/create-goal' component={CreateGoalPage} />
                 <Route exact path='/main/profile-page' component={ProfilePage} />
+                <Route exact path='/main/friends' component={FriendsPage} />
                 <Route exact path='/main/friends/:userid' render={ (props) => {
                     let profileUserId = props.match.params.userid
                     return <ProfilePage profileUserId={profileUserId}/>
                 }} />
+
             </Switch>
             </div>
             <div className="nav-placeholder"></div>

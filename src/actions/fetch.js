@@ -28,6 +28,16 @@ export let fetchGoals = (userId) => {
     ) 
 }
 
+export let fetchFriendList = (user) => {
+    return (
+        fetch('http://localhost:5000/getMyFriends', {
+            method: 'POST',
+            body: JSON.stringify(user)
+        })
+        .then( res => res.json())
+    ) 
+}
+
 export let fetchUser = (userId) => {
     return (
         fetch('http://localhost:5000/getUser', {

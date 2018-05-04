@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileCheckin from './ProfileCheckin';
+import SelectGoal from './SelectGoal';
 
 let fetchCheckins = (userId) =>
     fetch('http://localhost:5000/getMyCheckins', {
@@ -12,7 +13,10 @@ class ProfileCheckins extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            checkins: []
+            checkins: [],
+            newCheckin: '',
+            writingNewCheckin: false,
+            newChkGoalId: '',
         }
     }
 
@@ -29,17 +33,56 @@ class ProfileCheckins extends React.Component{
     }
 
     render() {
-        let {checkins} = this.state;
+        let {checkins, writingNewCheckin} = this.state;
         let { me, userId } = this.props
+
+        let toggleInput = () => {
+            this.setState({writingNewCheckin: !writingNewCheckin})
+        }
+
+        let updateNewCheckin = (event) => {
+            this.setState({newCheckin: event.target.value})
+        }
+
+        let postCheckin = () => {
+            console.log(this.state.newCheckin, this.state.newChkGoalId)
+        }
+
+        let resetNewCheckin = () => {
+            this.setState({newCheckin: ''})
+        }
+
+        let updateNewChkGoalId = (event) => {
+            console.log(event.target)
+            this.setState({newChkGoalId: event.target.value})
+        }
+
         return(
             <div className='profile-goals-part'>
                 <div className='profile-title'> 
                     <div>Recent Checkins: </div>
                     {
                         ( !userId || userId === me.userid.toString() ) &&
-                        <button>add</button>
+                            <i onClick={toggleInput} className="fas fa-plus-circle"></i>
                     }
                 </div>
+                {writingNewCheckin &&
+                    <div> 
+                        <input 
+                            className='write-new-checkin'
+                            onChange={updateNewCheckin}>
+                        </input>
+                        <SelectGoal handler={updateNewChkGoalId} />
+                        <button
+                            onClick={() => {
+                                postCheckin();
+                                toggleInput();
+                                resetNewCheckin();
+                            }}
+                            >Submit
+                        </button>
+                    </div>
+                }
                 {checkins.length && checkins.map( (chk, i) => {
                     return <ProfileCheckin key={i} checkin={chk}/>
                 })}

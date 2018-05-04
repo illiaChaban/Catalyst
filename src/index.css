@@ -260,9 +260,13 @@ h2, h1{
   text-shadow: 1px 1px 1px #c54040, 1px 1px #c74b16;
   display: flex;
   justify-content: space-between;
-  
+  padding: 2px;
 }
 
 .inline{
   display: inline-block;
+}
+
+.white{
+  color: white;
 }

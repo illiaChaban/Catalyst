@@ -270,3 +270,9 @@ h2, h1{
 .white{
   color: white;
 }
+
+.add-checkin{
+  display: flex;
+  justify-content: space-between;
+  /* margin-left: 2 */
+}

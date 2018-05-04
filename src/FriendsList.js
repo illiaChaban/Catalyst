@@ -8,7 +8,9 @@ class FriendsList extends React.Component{
         super(props);
         this.state = {
             friends: [],
-            search:''
+            search:'',
+            usersToShow: [],
+            showingUsers: false,
         }
     }
 
@@ -16,6 +18,7 @@ class FriendsList extends React.Component{
         if( prevProps !== this.props) {
             fetchFriendList(this.props.user)
             .then(friends => {
+                console.log(friends)
                 this.setState({friends})
             })
         }
@@ -24,31 +27,33 @@ class FriendsList extends React.Component{
     handleSubmit = () => {
         let {search} = this.state;
         
-        let url = 'http://localhost:5000/addFriend';
+        let url = 'http://localhost:5000/searchFriends';
         let post = {
             method: 'POST',
-            body: JSON.stringify({
-                userid: this.props.user.userid,
-                search: search,
-            })
+            body: search
 
         };
         fetch(url, post)
-        .then(data => console.log(data))
+        .then(res => res.json())
+        // .then(users => console.log(users))
+        .then( users => this.setState({usersToShow: users, showingUsers: true}))
     }
 
     render() {
         // console.log('rendering')
         // console.log(this.state.friends)
-        let { friends } = this.state;
+        let { friends, showingUsers, usersToShow } = this.state;
+
         return(
             <div className="friends-container">
             <form className="friend-form" >
                 <input type="text" placeholder="Enter username..." onChange={(event) => this.setState({ search:event.target.value })}/>
                 <i onClick={this.handleSubmit} className="fas fa-search-plus fa-2x"></i>
             </form>
-                { 
-                    friends.map( (friend,i) => <Link key={friend.userid} to={`/main/friends/${friend.userid}`}><Friend  friend={friend}/></Link>) 
+                {   
+                    (
+                        showingUsers ? usersToShow: friends
+                    ).map( (friend,i) => <Link key={friend.userid} to={`/main/friends/${friend.userid}`}><Friend  friend={friend}/></Link>) 
                 } 
             </div>
         )

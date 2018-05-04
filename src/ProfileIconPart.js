@@ -1,17 +1,32 @@
 import React from 'react';
 // import { connect } from 'react-redux';
+import { fetchUser } from './actions/fetch';
+import ProfileIcon from './ProfileIcon';
 
 class ProfileIconPart extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            user: ''
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if( prevProps !== this.props) {
+            fetchUser(this.props.userId)
+            .then( user => {
+                this.setState({user})
+            })
+        }
+    }
 
     render() {
-        let { user } = this.props;
-        // console.log(user)
+        let { user } = this.state;
         return(
             <div className="profile-icon-part">
-                <div>
-                    <img src={user.avatar} alt='avatar'/>
-                    <div className='username'>{user.username}</div>
-                </div>
+                {user ? 
+                <ProfileIcon user={user}/> : 
+                <ProfileIcon user={this.props.me}/>}
             </div>
         )
     }

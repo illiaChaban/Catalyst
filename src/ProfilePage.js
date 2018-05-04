@@ -13,7 +13,7 @@ class ProfilePage extends Component{
     constructor(props){
         super(props);
         this.state = {
-
+            
         }
     }
 
@@ -28,14 +28,14 @@ class ProfilePage extends Component{
 
     render() {
         console.log(this.props)
-        let { user } = this.props;
+        let { me, profileUserId } = this.props;
         // console.log(user)
         console.log('rendering prof page')
         return (
             <div>
-                <ProfileIconPart user={user}/>
-                <ProfileGoals user={user}/>
-                <ProfileCheckins user={user}/>
+                <ProfileIconPart userId={profileUserId} me={me}/>
+                <ProfileGoals userId={profileUserId} me={me}/>
+                <ProfileCheckins userId={profileUserId} me={me}/>
             </div>
         )
     }
@@ -46,8 +46,8 @@ class ProfilePage extends Component{
 
 export default connect(
     (state, props) => ({ 
-        user: state.user,
-        pageUserId: props.match.params.userid
+        me: state.user,
+        profileUserId: props.profileUserId,
     })
 )(ProfilePage);
 

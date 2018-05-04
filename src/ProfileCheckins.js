@@ -1,6 +1,13 @@
 import React from 'react';
 import ProfileCheckin from './ProfileCheckin';
 
+let fetchCheckins = (userId) =>
+    fetch('http://localhost:5000/getMyCheckins', {
+        method: 'POST',
+        body: JSON.stringify(userId)
+    })
+    .then(res => res.json())
+
 class ProfileCheckins extends React.Component{
     constructor(props){
         super(props);
@@ -9,17 +16,15 @@ class ProfileCheckins extends React.Component{
         }
     }
 
-    componentDidUpdate(prevProps){
+    async componentDidUpdate(prevProps){
         if( prevProps !== this.props) {
-            fetch('http://localhost:5000/getMyCheckins', {
-                method: 'POST',
-                body: JSON.stringify(this.props.user)
-            })
-            .then(res => res.json())
-            // .then(console.log)
-            .then( checkins => {
-                this.setState({checkins})
-            })
+            let { me, userId } = this.props
+            let checkins;
+            // checking if it's user's profile or his friend's
+            userId ? 
+            checkins = await fetchCheckins(userId) :
+            checkins = await fetchCheckins(me.userid);
+            this.setState({checkins})
         }
     }
 

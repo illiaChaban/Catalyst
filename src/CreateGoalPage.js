@@ -48,7 +48,7 @@ class CreateGoalPage extends Component  {
         };
 
         fetch(url, post)
-        .then(data => console.log(data))
+        this.props.history.push('/main/profile-page')      
     }
 
     render (){        

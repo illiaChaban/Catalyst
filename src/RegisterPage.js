@@ -22,23 +22,25 @@ fetchOnClick = event => {
     let baseUrl = 'http://localhost:5000/register'
     let payload = {
         'email': this.state.email,
-        'passw': this.state.password,
+        'password': this.state.password,
         'username': this.state.username,
         'avatar': this.state.avatar
     }
     fetch(baseUrl, {
-        body: JSON.stringify(payload),
-        method: 'POST',
         headers: {
-            'content-type': 'application/json'
-        }
+            'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(payload)
     })
     .then(res => {
-        console.log('response',res)
+        // console.log('response',res)
         if (res.status === 200) {
             res.text().then(res => {
                 localStorage.setItem('jwt', res)
                 this.setState({isLoggedIn: true})
+                // this.props.history.push('/main/feed')
+                
             })
         }
     })

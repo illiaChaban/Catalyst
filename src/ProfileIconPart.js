@@ -2,41 +2,10 @@ import React from 'react';
 // import { connect } from 'react-redux';
 import { fetchUser, fetchFriendList } from './actions/fetch';
 import ProfileIcon from './ProfileIcon';
-import { Redirect } from 'react-router-dom'
+import ButtonAddFriend from './ButtonAddFriend';
+import YouAreFriends from './YouAreFriends';
+import LogOutBtn from './LogOutBtn';
 
-let ButtonAddFriend = ({handler}) => {
-
-    return (
-        <button 
-            className='add-friend'
-            onClick={handler}
-        >ADD FRIEND
-        </button>
-    )
-}
-
-let YouAreFriends = () => <div className='add-friend'>Friends <i className="far fa-check-circle"></i></div>
-
-class LogOutBtn extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            logOut: false,
-        }
-    }
-
-    render() {
-        return (
-            <div className='add-friend'>
-                <button onClick={()=> {
-                    localStorage.jwt = '';
-                    this.setState({logOut: true})
-                }}>Log Out</button>
-                {this.state.logOut && <Redirect to='/'/>}
-            </div>
-        )
-    }
-}
 
 class ProfileIconPart extends React.Component{
     constructor(props){

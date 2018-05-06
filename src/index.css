@@ -317,11 +317,14 @@ h2, h1{
 
 .profile-goals-part{
   border-top: 2px gray solid;
+  /* padding-left: 2px; */
 }
 
 
 .profile-goal h3{
   margin: 0px;
+  display: inline-block;
+  
 }
 
 .profile-title {
@@ -366,4 +369,15 @@ h2, h1{
 
 .add-checkin select{
   border: 1px solid black;
+}
+
+.or{
+  /* background-color: gray; */
+  color: #ff6e6e;
+  text-shadow: 1px 1px 1px black, 1px 1px black;
+  
+}
+
+.profile-goal{
+  margin: 0px 3px;
 }

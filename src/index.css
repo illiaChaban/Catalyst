@@ -249,13 +249,15 @@ h2, h1{
   align-items: center;
   margin: 0;
   padding: 10px;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   border-bottom: 1px white solid;
+  width: 100%;
 }
 
 .friend-container ul li img {
   width: 75px;
   height: auto;
+  max-height: 80px;
 }
 
 .friend-container ul li span {
@@ -383,4 +385,10 @@ h2, h1{
 .profile-goal{
   margin: 0px 3px;
 }
+
+#friend-list-arrow{
+  position: absolute;
+  right: 7px;
+}
+
 

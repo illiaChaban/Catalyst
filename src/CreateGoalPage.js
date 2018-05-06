@@ -57,7 +57,7 @@ class CreateGoalPage extends Component  {
         
         let generatePunishmentHandler = () => {
             let punishment = getRandomPunishment(punishments);
-            document.getElementById('punishment-input').value = punishment;
+            // document.getElementById('punishment-input').value = punishment;
             this.setState({punishment})
         }
 
@@ -109,7 +109,8 @@ class CreateGoalPage extends Component  {
                             id='punishment-input' 
                             className='goal-input'                        
                             onChange={(event) => this.setState({ punishment:event.target.value }) } 
-                            type="text" required>
+                            type="text" required
+                            value={this.state.punishment}>
                         </textarea>
                     </li>
                     <div className='create-goal-btns'>

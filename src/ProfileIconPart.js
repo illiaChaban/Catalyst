@@ -2,17 +2,10 @@ import React from 'react';
 // import { connect } from 'react-redux';
 import { fetchUser, fetchFriendList } from './actions/fetch';
 import ProfileIcon from './ProfileIcon';
+import ButtonAddFriend from './ButtonAddFriend';
+import YouAreFriends from './YouAreFriends';
+import LogOutBtn from './LogOutBtn';
 
-let ButtonAddFriend = ({handler}) => {
-
-    return (
-        <button 
-            className='add-friend'
-            onClick={handler}
-        >ADD FRIEND
-        </button>
-    )
-}
 
 class ProfileIconPart extends React.Component{
     constructor(props){
@@ -43,18 +36,17 @@ class ProfileIconPart extends React.Component{
 
     render() {
         let { user, myFriends } = this.state;
-        // console.log( user, myFriends)
+        let { userId, me, history} = this.props;
         let itsMyFriend = myFriends.find( friend => friend.userid === user.userid);
-
+    
+        console.log('history', history)
         let addFriend = (userid) => {
             let newFriendsArray = myFriends.map( el => (el.userid.toString()))
             newFriendsArray.push(userid.toString());
-            // console.log(newFriendsArray)
-            // console.log('adding friend', userid)
             fetch('http://localhost:5000/addFriend', {
                 method: 'POST',
                 body: JSON.stringify({
-                    userid: this.props.me.userid,
+                    userid: me.userid,
                     friendsarray: JSON.stringify(newFriendsArray)
                 })
             })
@@ -62,10 +54,12 @@ class ProfileIconPart extends React.Component{
 
         return(
             <div className="profile-icon-part">
-                {user ? 
-                <ProfileIcon user={user}/> : 
-                <ProfileIcon user={this.props.me}/>}
-                {!itsMyFriend && <ButtonAddFriend handler={() => addFriend(user.userid)}/>}
+                {!user || ( history && history.location.pathname === '/main/profile-page') ?
+                <ProfileIcon user={me}/>: 
+                <ProfileIcon user={user}/>}
+                {user && !itsMyFriend && <ButtonAddFriend handler={() => addFriend(user.userid)}/>}
+                {user && itsMyFriend && <YouAreFriends/>}
+                {!user && <LogOutBtn props={this.props}/>}
             </div>
         )
     }

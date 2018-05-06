@@ -17,11 +17,11 @@ class ProfilePage extends Component{
     }
 
     render() {
-        let { me, profileUserId } = this.props;
+        let { me, profileUserId, history } = this.props;
 
         return (
             <div>
-                <ProfileIconPart userId={profileUserId} me={me}/>
+                <ProfileIconPart userId={profileUserId} me={me} history={history}/>
                 <ProfileGoals userId={profileUserId} me={me}/>
                 <ProfileCheckins userId={profileUserId} me={me}/>
             </div>
@@ -33,5 +33,6 @@ export default connect(
     (state, props) => ({ 
         me: state.user,
         profileUserId: props.profileUserId,
+        history: props.history,
     })
 )(ProfilePage);

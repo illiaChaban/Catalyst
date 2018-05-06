@@ -10,12 +10,14 @@ export let fetchFriends = (dispatch) =>
     .then( res => res.json())
     .then( friends => updateFriends({dispatch, friends}))
 
-export let fetchMe = () => 
-fetch('http://localhost:5000/user/me', {
-    headers: {
-        authorization: localStorage.jwt,
-    }
-})
+export let fetchMe = () => {
+    return fetch('http://localhost:5000/user/me', {
+        headers: {
+            authorization: localStorage.jwt,
+        }
+    })
+}
+
 
 export let fetchGoals = (userId) => {
     // console.log(typeof userId)

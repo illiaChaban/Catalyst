@@ -18,7 +18,7 @@ class FriendsList extends React.Component{
         if( prevProps !== this.props) {
             fetchFriendList(this.props.user.userid)
             .then(friends => {
-                console.log(friends)
+                // console.log(friends)
                 this.setState({friends})
             })
         }
@@ -37,21 +37,30 @@ class FriendsList extends React.Component{
         .then(res => res.json())
         // .then(users => console.log(users))
         .then( users => {
-            console.log(users)
+            // console.log(users)
             this.setState({usersToShow: users, showingUsers: true})
         })
     }
 
     render() {
-        // console.log('rendering')
-        // console.log(this.state.friends)
         let { friends, showingUsers, usersToShow } = this.state;
-        console.log(usersToShow)
+
+        let EnterHandler = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.handleSubmit()
+            }
+        }
 
         return(
             <div className="friends-container">
             <form className="friend-form" >
-                <input type="text" placeholder="Enter username..." onChange={(event) => this.setState({ search:event.target.value })}/>
+                <input 
+                    type="text" 
+                    placeholder="Enter username..." 
+                    onChange={(event) => this.setState({ search:event.target.value })}
+                    onKeyPress={EnterHandler}
+                />
                 <i onClick={this.handleSubmit} className="fas fa-search-plus fa-2x"></i>
             </form>
                 {   

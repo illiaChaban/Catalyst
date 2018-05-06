@@ -42,6 +42,7 @@ h2, h1{
 .navbar-placeholder {
   height: 200px;
   width: 100vw;
+  /* width:100% */
   /* background-color: gold; */
 }
 
@@ -148,18 +149,20 @@ h2, h1{
   flex-direction: column;
   /* background-color: aquamarine; */
   height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 20px;
   align-items: center;
 }
 
 .create-goal-container div {
   /* background-color: aqua; */
   max-width: 400px;
-  font-size: 200%;
+  font-size: 185%;
 }
 
 ::-webkit-input-placeholder {
   text-align: center;
+  font-size: 0.8em;
 }
 
 .create-goal-container h3{
@@ -168,9 +171,16 @@ h2, h1{
 
 .create-goal-container input {
   border: 2px solid #ff6e6e;
-  border-radius: 5%;
+  border-radius: 7px;
   font-size: 65%;
 }
+
+.create-goal-container textarea {
+  border: 2px solid #ff6e6e;
+  border-radius: 7px;
+  font-size: 65%;
+}
+
 .create-goal-container button {
   background-color: #ff6e6e;
   border: none;
@@ -243,19 +253,26 @@ h2, h1{
   color: gray;
 }
 
+.friend-container{
+  width:100%;
+}
+
+
 .friend-container ul {
   display: flex;
   background-color: #919191;
   align-items: center;
+  width: 100%;  
   margin: 0;
-  padding: 10px;
-  justify-content: space-evenly;
+  padding: 5px 0;
+  justify-content: flex-start;
   border-bottom: 1px white solid;
 }
 
 .friend-container ul li img {
   width: 75px;
   height: auto;
+  max-height: 80px;
 }
 
 .friend-container ul li span {
@@ -304,6 +321,10 @@ h2, h1{
   min-width: 35px;
 }
 
+/* .date-input ::placeholder{
+  font-size: 0.8em;
+} */
+
 .profile-icon-part{
   margin-top: 10px;
   display: flex;
@@ -317,11 +338,14 @@ h2, h1{
 
 .profile-goals-part{
   border-top: 2px gray solid;
+  /* padding-left: 2px; */
 }
 
 
 .profile-goal h3{
   margin: 0px;
+  display: inline-block;
+  
 }
 
 .profile-title {
@@ -344,6 +368,7 @@ h2, h1{
 .add-checkin{
   display: flex;
   justify-content: space-between;
+  width: 100%;
   /* margin-left: 2 */
 }
 
@@ -351,4 +376,52 @@ h2, h1{
   border: 1px solid black;
   position: absolute;
   right: 10px;
+  border-radius: 5px;
+  padding: 0 2px;
 }
+
+.add-checkin input{
+  border: 1px solid #ff6e6e;
+}
+
+.add-checkin button{
+  background-color: #ff6e6e;
+  color: white;
+  text-shadow: 1px 1px 1px #c54040, 1px 1px #c74b16;
+}
+
+.add-checkin select{
+  border: 1px solid black;
+}
+
+.or{
+  /* background-color: gray; */
+  color: #ff6e6e;
+  text-shadow: 1px 1px 1px black, 1px 1px black;
+  
+}
+
+.profile-goal{
+  margin: 0px 3px;
+}
+
+#friend-list-arrow{
+  position: absolute;
+  right: 7px;
+}
+
+.goal-input{
+  width: 97%;
+  margin: 0 2px;
+}
+
+.create-goal-btns{
+  display: flex;
+  justify-content: space-around;
+}
+
+.create-goal-btns button{
+  width: 120px;
+  height: auto;
+}
+

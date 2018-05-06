@@ -3,7 +3,20 @@ import { connect } from 'react-redux';
 import { fetchMe } from './actions/fetch';
 import { updateUserInfo } from './actions/dispatch';
 import updateDate from './lib/updateDate';
+import punishments from './lib/punishments';
 // import DeadlineDate from './DeadlineDate';
+
+let BtnGeneratePunishment = ({handler}) => 
+    <button 
+        onClick={handler}
+        className='btn-generate-punishment' 
+        >Generate Punishment
+    </button>
+let getRandomPunishment = (punishmentsArr) => {
+    let randomNum = Math.round( Math.random()* (punishmentsArr.length - 1));
+    return punishmentsArr[randomNum];
+}
+
 
 class CreateGoalPage extends Component  {
     constructor(props){
@@ -51,23 +64,33 @@ class CreateGoalPage extends Component  {
         this.props.history.push('/main/profile-page')      
     }
 
-    render (){        
+    render (){
+        
+        let generatePunishmentHandler = () => {
+            let punishment = getRandomPunishment(punishments);
+            document.getElementById('punishment-input').value = punishment;
+            this.setState({punishment})
+        }
+
         return (
             <div className="create-goal-container">
             <div>
                 <li><h1>Create Goal</h1></li>
-               <li><h3>Title:</h3>
-               
+                <li> 
+                    <h3>Title:</h3>
                     <input 
+                        className='goal-input'
                         onChange={(event) => this.setState({ title:event.target.value }) } 
                         type="text" required/>
                 </li>
                 
                 <li>
                     <h3>Description:</h3>
-                    <input 
+                    <textarea
+                        className='goal-input'                        
                         onChange={(event) => this.setState({ description:event.target.value }) } 
-                        type="text" required/>
+                        type="text" required>
+                    </textarea>
                     </li>
                 <li>
                     <h3>Deadline:</h3>
@@ -90,14 +113,20 @@ class CreateGoalPage extends Component  {
                             onChange={(event) => this.setState({ year:event.target.value }) } 
                             type='number' min="2018" max="2200" required /> 
                     </div>
-                </li>
-                <li>
-                    <h3>Punishment:</h3>
-                    <input 
-                        onChange={(event) => this.setState({ punishment:event.target.value }) } 
-                        type="text" required/>
-                </li>
-                <button onClick={this.handleSubmit}>Submit Goal</button>
+                    </li>
+                    <li>
+                        <h3>Punishment:</h3>
+                        <textarea
+                            id='punishment-input' 
+                            className='goal-input'                        
+                            onChange={(event) => this.setState({ punishment:event.target.value }) } 
+                            type="text" required>
+                        </textarea>
+                    </li>
+                    <div className='create-goal-btns'>
+                        <BtnGeneratePunishment handler={generatePunishmentHandler}/>                
+                        <button onClick={this.handleSubmit}>Submit Goal</button>
+                    </div>
                 </div>
             </div>
         )

@@ -46,7 +46,7 @@ class ProfileIconPart extends React.Component{
             fetch('http://localhost:5000/addFriend', {
                 method: 'POST',
                 body: JSON.stringify({
-                    userid: this.props.me.userid,
+                    userid: me.userid,
                     friendsarray: JSON.stringify(newFriendsArray)
                 })
             })

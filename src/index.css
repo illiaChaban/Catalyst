@@ -344,6 +344,7 @@ h2, h1{
 .add-checkin{
   display: flex;
   justify-content: space-between;
+  width: 100%;
   /* margin-left: 2 */
 }
 
@@ -351,4 +352,18 @@ h2, h1{
   border: 1px solid black;
   position: absolute;
   right: 10px;
+}
+
+.add-checkin input{
+  border: 1px solid #ff6e6e;
+}
+
+.add-checkin button{
+  background-color: #ff6e6e;
+  color: white;
+  text-shadow: 1px 1px 1px #c54040, 1px 1px #c74b16;
+}
+
+.add-checkin select{
+  border: 1px solid black;
 }

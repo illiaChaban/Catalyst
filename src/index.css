@@ -355,6 +355,8 @@ h2, h1{
   border: 1px solid black;
   position: absolute;
   right: 10px;
+  border-radius: 5px;
+  padding: 0 2px;
 }
 
 .add-checkin input{
@@ -381,3 +383,4 @@ h2, h1{
 .profile-goal{
   margin: 0px 3px;
 }
+

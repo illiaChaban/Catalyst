@@ -4,19 +4,8 @@ import { fetchMe } from './actions/fetch';
 import { updateUserInfo } from './actions/dispatch';
 import updateDate from './lib/updateDate';
 import punishments from './lib/punishments';
-// import DeadlineDate from './DeadlineDate';
-
-let BtnGeneratePunishment = ({handler}) => 
-    <button 
-        onClick={handler}
-        className='btn-generate-punishment' 
-        >Generate Punishment
-    </button>
-let getRandomPunishment = (punishmentsArr) => {
-    let randomNum = Math.round( Math.random()* (punishmentsArr.length - 1));
-    return punishmentsArr[randomNum];
-}
-
+import BtnGeneratePunishment from './BtnGeneratePunishment';
+import getRandomPunishment from './lib/getRandomPunishment';
 
 class CreateGoalPage extends Component  {
     constructor(props){

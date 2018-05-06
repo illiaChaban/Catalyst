@@ -36,10 +36,10 @@ class ProfileIconPart extends React.Component{
 
     render() {
         let { user, myFriends } = this.state;
-        let { userId, me} = this.props;
+        let { userId, me, history} = this.props;
         let itsMyFriend = myFriends.find( friend => friend.userid === user.userid);
     
-
+        console.log('history', history)
         let addFriend = (userid) => {
             let newFriendsArray = myFriends.map( el => (el.userid.toString()))
             newFriendsArray.push(userid.toString());
@@ -54,9 +54,9 @@ class ProfileIconPart extends React.Component{
 
         return(
             <div className="profile-icon-part">
-                {user ? 
-                <ProfileIcon user={user}/> : 
-                <ProfileIcon user={me}/>}
+                {!user || ( history && history.location.pathname === '/main/profile-page') ?
+                <ProfileIcon user={me}/>: 
+                <ProfileIcon user={user}/>}
                 {user && !itsMyFriend && <ButtonAddFriend handler={() => addFriend(user.userid)}/>}
                 {user && itsMyFriend && <YouAreFriends/>}
                 {!user && <LogOutBtn props={this.props}/>}

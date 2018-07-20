@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMe } from './actions/fetch';
-import { updateUserInfo } from './actions/dispatch';
-import ProfileIconPart from './ProfileIconPart';
-import ProfileGoals from './ProfileGoals';
-import ProfileCheckins from './ProfileCheckins';
+import { fetchMe } from '../actions/fetch';
+import { updateUserInfo } from '../actions/dispatch';
+import ProfileIconPart from './ProfileIconPart/ProfileIconPart';
+import ProfileGoals from './ProfileGoals/ProfileGoals';
+import ProfileCheckins from './ProfileCheckins/ProfileCheckins';
 
 class ProfilePage extends Component{
     async componentDidMount() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileCheckin from './ProfileCheckin';
 import SelectGoal from './SelectGoal';
-import { fetchCheckins } from './actions/fetch';
+import { fetchCheckins } from '../../actions/fetch';
 import SubmitBtnCheckIn from './SubmitBtnCheckIn';
 import InputCheckIn from './InputCheckIn';
 import CheckinTitle from './CheckinTitle';

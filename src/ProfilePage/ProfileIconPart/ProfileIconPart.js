@@ -1,6 +1,6 @@
 import React from 'react';
 // import { connect } from 'react-redux';
-import { fetchUser, fetchFriendList } from './actions/fetch';
+import { fetchUser, fetchFriendList } from '../../actions/fetch';
 import ProfileIcon from './ProfileIcon';
 import ButtonAddFriend from './ButtonAddFriend';
 import YouAreFriends from './YouAreFriends';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Option from './Option';
-import { fetchGoals } from './actions/fetch';
+import { fetchGoals } from '../../actions/fetch';
 import { connect } from 'react-redux';
 
 class SelectGoal extends React.Component{

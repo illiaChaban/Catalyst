@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileGoal from './ProfileGoal';
-import { fetchGoals } from './actions/fetch';
+import { fetchGoals } from '../../actions/fetch';
 import { Link } from 'react-router-dom';
 
 class ProfileGoals extends React.Component{

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Switch, NavLink} from 'react-router-dom';
 import CreateGoalPage from './CreateGoalPage';
-import ProfilePage from './ProfilePage';
+import ProfilePage from './ProfilePage/ProfilePage';
 import FriendsPage from './FriendsPage';
 import Feed from './Feed';
 

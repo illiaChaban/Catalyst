@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateUserInfo } from './actions/dispatch';
-import { fetchMe } from './actions/fetch';
+import { updateUserInfo } from '../actions/dispatch';
+import { fetchMe } from '../actions/fetch';
 
 
 class InitialRouterDumb extends React.Component{

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import LogoContainer from '../LogoContainer';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -64,13 +65,12 @@ class LoginPage extends Component {
                             <li><button type="submit" 
                                 onClick={(event) => this.handleClick(event)}>Log in</button>
                                 <button onClick={() => this.props.history.push('/register')}>Register</button></li>
-                                {this.state.isLoggedIn === false ? <div><p>Failed Login, please try again.</p></div> : <div></div>}
                         </ul>
+                        {this.state.isLoggedIn === false && <div className='failed-login-sign'><p>Failed Login, please try again.</p></div> }
+
                     </form>
                 </div>
-                <div className="loginpage-logo-container">
-                    <img className="logo" alt="catalyst" src="http://i.imgur.com/ewWJs9l.jpg" />
-                </div>
+                <LogoContainer/>
             </div>
         )
     }

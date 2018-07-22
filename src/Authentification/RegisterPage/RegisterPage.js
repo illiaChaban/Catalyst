@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
+import LogoContainer from '../LogoContainer';
 
 
 class RegisterPage extends Component {
@@ -65,17 +66,17 @@ render() {
                             onChange = {(event) => this.setState({password:event.target.value})}/></li>
                         <li><input type="text" placeholder="Image URL" 
                             onChange = {(event) => this.setState({avatar:event.target.value})}/></li>
-                        <li><button
+                        <li>
+                            <button
                             onClick={() => this.props.history.push('/login')}>Cancel</button>
                             <button type="submit"
-                            onClick={(event) => this.fetchOnClick(event)}>Submit</button></li>
+                            onClick={(event) => this.fetchOnClick(event)}>Submit</button>
+                        </li>
                     </ul>
                 </form>
             </div>
             {this.state.isLoggedIn && <Redirect to='/main/feed'/>}
-            <div className="loginpage-logo-container">
-                <img className="logo" alt="catalyst" src="http://i.imgur.com/ewWJs9l.jpg" />
-            </div>
+            <LogoContainer/>
     </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchFriendList } from './actions/fetch';
+import { fetchFriendList } from '../actions/fetch';
 import {Link} from 'react-router-dom';
 import Friend from './Friend';
 

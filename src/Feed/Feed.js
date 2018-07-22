@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { arraysOfObjAreEqual } from './lib/arraysOfObjAreEqual';
-import { fetchFriends } from './actions/fetch';
+import { arraysOfObjAreEqual } from '../lib/arraysOfObjAreEqual';
+import { fetchFriends } from '../actions/fetch';
 import CheckIn from './CheckIn';
 
 

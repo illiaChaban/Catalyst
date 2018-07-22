@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMe } from './actions/fetch';
-import { updateUserInfo } from './actions/dispatch';
+import { fetchMe } from '../actions/fetch';
+import { updateUserInfo } from '../actions/dispatch';
 import FriendsList from './FriendsList';
 
 class FriendsPage extends Component{

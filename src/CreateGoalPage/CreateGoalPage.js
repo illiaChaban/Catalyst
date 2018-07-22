@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMe } from './actions/fetch';
-import { updateUserInfo } from './actions/dispatch';
-import updateDate from './lib/updateDate';
-import punishments from './lib/punishments';
+import { fetchMe } from '../actions/fetch';
+import { updateUserInfo } from '../actions/dispatch';
+import updateDate from '../lib/updateDate';
+import punishments from '../lib/punishments';
 import BtnGeneratePunishment from './BtnGeneratePunishment';
-import getRandomPunishment from './lib/getRandomPunishment';
+import getRandomPunishment from '../lib/getRandomPunishment';
 
 class CreateGoalPage extends Component  {
     constructor(props){

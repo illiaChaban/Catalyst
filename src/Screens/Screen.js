@@ -1,8 +1,8 @@
 import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
-import InitialRouter from './Authentification/InitialRouter';
-import LoginPage from './Authentification/LoginPage/LoginPage';
-import RegisterPage from './Authentification/RegisterPage/RegisterPage';
+import InitialRouter from '../Authentification/InitialRouter';
+import LoginPage from '../Authentification/LoginPage/LoginPage';
+import RegisterPage from '../Authentification/RegisterPage/RegisterPage';
 import MainScreen from './MainScreen';
 
 

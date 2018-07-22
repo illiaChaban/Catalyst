@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch, NavLink} from 'react-router-dom';
-import CreateGoalPage from './CreateGoalPage';
-import ProfilePage from './ProfilePage/ProfilePage';
-import FriendsPage from './FriendsPage/FriendsPage';
-import Feed from './Feed/Feed';
+import CreateGoalPage from '../CreateGoalPage/CreateGoalPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
+import FriendsPage from '../FriendsPage/FriendsPage';
+import Feed from '../Feed/Feed';
 
 let MainScreen = () => {   
     return(

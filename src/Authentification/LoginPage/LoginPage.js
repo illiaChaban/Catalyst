@@ -17,7 +17,7 @@ class LoginPage extends Component {
     }
 
     handleClick = e => {
-        let baseUrl = 'http://localhost:5000/login'
+        let baseUrl = 'http://localhost:5000/authentication/login'
         let payload = {
             'email': this.state.email,
             'password': this.state.password
@@ -34,7 +34,7 @@ class LoginPage extends Component {
                     res.text().then(res => {
                         localStorage.setItem('jwt', res)
                         this.setState({ isLoggedIn: true })
-                        this.props.history.push('/main/feed')
+                        this.props.history.push('/main/profile-page')
                     })
                 } else {
                     this.setState({ isLoggedIn: false })

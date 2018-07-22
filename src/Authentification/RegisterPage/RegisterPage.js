@@ -20,7 +20,7 @@ handleSubmit = event => {
     }
 
 fetchOnClick = event => {
-    let baseUrl = 'http://localhost:5000/register'
+    let baseUrl = 'http://localhost:5000/authentication/register'
     let payload = {
         'email': this.state.email,
         'password': this.state.password,
@@ -75,7 +75,7 @@ render() {
                     </ul>
                 </form>
             </div>
-            {this.state.isLoggedIn && <Redirect to='/main/feed'/>}
+            {this.state.isLoggedIn && <Redirect to='/main/profile-page'/>}
             <LogoContainer/>
     </div>
     )

@@ -11,7 +11,7 @@ export let fetchFriends = (dispatch) =>
     .then( friends => updateFriends({dispatch, friends}))
 
 export let fetchMe = () => {
-    return fetch('http://localhost:5000/user/me', {
+    return fetch('http://localhost:5000/authentication/user/me', {
         headers: {
             authorization: localStorage.jwt,
         }

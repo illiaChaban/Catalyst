@@ -37,7 +37,7 @@ class InitialRouterDumb extends React.Component{
         let { loggedIn } = this.state;
         return (
             <div>
-                {loggedIn === true && <Redirect to="/main/feed"/>} 
+                {loggedIn === true && <Redirect to="/main/profile-page"/>} 
                 {loggedIn === false && <Redirect to='/login'/>} 
             </div>
         )

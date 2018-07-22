@@ -31,24 +31,24 @@ h2, h1{
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   /* background-color: blue; */
 }
 
 .content-container {
   background-color: white;
-  height: 100vh;
+  height: 89vh;
   width: 100vw;
 }
 .navbar-placeholder {
-  height: 200px;
+  height: 11vh;
   width: 100vw;
-  /* width:100% */
   /* background-color: gold; */
 }
 
 .navbar {
   background-color: #ff6e6e;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   bottom: 0;
   width: 100%;

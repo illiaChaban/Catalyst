@@ -39,6 +39,9 @@ class CreateGoalPage extends Component  {
         let url = 'http://localhost:5000/goals';
         let post = {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 userid: this.props.user.userid,
                 title: title,

@@ -21,11 +21,13 @@ class ProfileCheckins extends React.Component{
     async componentDidUpdate(prevProps){
         if( prevProps !== this.props) {
             let { me, userId } = this.props
-            let checkins;
+            console.log('##### GETTING PROFILE CHECKINS')
+            console.log( 'userId (friend)', userId)
+            console.log( 'me (me)', me)
             // checking if it's user's profile or his friend's
-            userId ? 
-            checkins = await fetchCheckins(userId) :
-            checkins = await fetchCheckins(me.userid);
+            let checkins = userId ? 
+                await fetchCheckins(userId) :
+                await fetchCheckins(me.userid);
             this.setState({checkins})
         }
     }

@@ -44,9 +44,13 @@ export let fetchUser = (userId) => {
     return (
         fetch('http://localhost:5000/getUser', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(userId)
         })
         .then(res => res.json())
+        .catch( console.log)
     )
 
 }
@@ -54,6 +58,9 @@ export let fetchUser = (userId) => {
 export let fetchCheckins = (userId) =>
     fetch('http://localhost:5000/getMyCheckins', {
         method: 'POST',
+        headers: {
+            'Content-Type':'text/plain'
+        },
         body: JSON.stringify(userId)
     })
     .then(res => res.json());

@@ -17,7 +17,9 @@ class ProfileIconPart extends React.Component{
     }
 
     componentDidUpdate(prevProps){
-        if( prevProps !== this.props) {
+        if ( prevProps.userId 
+            && prevProps !== this.props
+        ) {
             fetchUser(this.props.userId)
             .then( user => {
                 this.setState({user})
@@ -37,7 +39,7 @@ class ProfileIconPart extends React.Component{
     render() {
         let { user, myFriends } = this.state;
         let { userId, me, history} = this.props;
-        let itsMyFriend = myFriends.find( friend => friend.userid === user.userid);
+        let itsMyFriend = userId ? myFriends.find( friend => friend.userid === userId) : false;
     
         console.log('history', history)
         let addFriend = (userid) => {
@@ -53,6 +55,9 @@ class ProfileIconPart extends React.Component{
         }
 
         return(
+
+            // shows log out btn on friends page
+            
             <div className="profile-icon-part">
                 {!user || ( history && history.location.pathname === '/main/profile-page') ?
                 <ProfileIcon user={me}/>: 

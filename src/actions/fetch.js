@@ -24,9 +24,13 @@ export let fetchGoals = (userId) => {
     return (
         fetch('http://localhost:5000/getMyGoals', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(userId)
         })
         .then( res => res.json())
+        .catch( console.log)
     ) 
 }
 
@@ -34,6 +38,9 @@ export let fetchFriendList = (userId) => {
     return (
         fetch('http://localhost:5000/getMyFriends', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(userId)
         })
         .then( res => res.json())
@@ -59,7 +66,7 @@ export let fetchCheckins = (userId) =>
     fetch('http://localhost:5000/getMyCheckins', {
         method: 'POST',
         headers: {
-            'Content-Type':'text/plain'
+            'Content-Type':'application/json'
         },
         body: JSON.stringify(userId)
     })

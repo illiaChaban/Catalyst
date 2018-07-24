@@ -47,6 +47,9 @@ class ProfileIconPart extends React.Component{
             newFriendsArray.push(userid.toString());
             fetch('http://localhost:5000/addFriend', {
                 method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
                 body: JSON.stringify({
                     userid: me.userid,
                     friendsarray: JSON.stringify(newFriendsArray)
@@ -57,7 +60,7 @@ class ProfileIconPart extends React.Component{
         return(
 
             // shows log out btn on friends page
-            
+
             <div className="profile-icon-part">
                 {!user || ( history && history.location.pathname === '/main/profile-page') ?
                 <ProfileIcon user={me}/>: 

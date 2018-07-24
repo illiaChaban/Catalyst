@@ -30,6 +30,9 @@ class FriendsList extends React.Component{
         let url = 'http://localhost:5000/searchFriends';
         let post = {
             method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain'
+            },
             body: search
 
         };

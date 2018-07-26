@@ -19,7 +19,6 @@ class ProfileGoals extends React.Component{
             userId ? 
             goals = await fetchGoals(userId) :
             goals = await fetchGoals(me.userid);
-            // console.log(goals)
             this.setState({goals})
         }
     }

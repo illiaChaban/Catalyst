@@ -27,7 +27,6 @@ class ProfileIconPart extends React.Component{
             .then( () => {
                 fetchFriendList(this.props.me.userid)
                 .then(myFriends => {
-                    // console.log(myFriends)
                     this.setState({myFriends})
                 })
             })
@@ -41,7 +40,6 @@ class ProfileIconPart extends React.Component{
         let { userId, me, history} = this.props;
         let itsMyFriend = userId ? myFriends.find( friend => friend.userid === userId) : false;
     
-        console.log('history', history)
         let addFriend = (userid) => {
             let newFriendsArray = myFriends.map( el => (el.userid.toString()))
             newFriendsArray.push(userid.toString());

@@ -20,7 +20,7 @@ let reducers = {
 let reducer = (oldState = initialState, action) => {
     if (reducers[action.type]) {
         let newState = reducers[action.type](oldState, action);
-        console.log('new redux state: ', newState);
+        // console.log('new redux state: ', newState);
         return newState;
     }
     return oldState;

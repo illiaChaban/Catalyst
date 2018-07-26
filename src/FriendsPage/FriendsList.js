@@ -18,7 +18,6 @@ class FriendsList extends React.Component{
         if( prevProps !== this.props) {
             fetchFriendList(this.props.user.userid)
             .then(friends => {
-                // console.log(friends)
                 this.setState({friends})
             })
         }
@@ -38,9 +37,7 @@ class FriendsList extends React.Component{
         };
         fetch(url, post)
         .then(res => res.json())
-        // .then(users => console.log(users))
         .then( users => {
-            // console.log(users)
             this.setState({usersToShow: users, showingUsers: true})
         })
     }

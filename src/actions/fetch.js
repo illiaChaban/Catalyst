@@ -21,7 +21,6 @@ export let fetchMe = () => {
 
 
 export let fetchGoals = (userId) => {
-    console.log('#### FETCHING GOALS', userId)
     return (
         fetch('http://localhost:5000/api/getMyGoals', {
             method: 'POST',

@@ -1,7 +1,6 @@
 export let updateUserInfoReducer = (oldState, action) => {
     let { username, avatar, userid, friendsarray} = action.payload;
     let user = { username, avatar, userid };
-    // console.log(user)
     let friends = JSON.parse(friendsarray)
     return ({ ...oldState, user, friends})
 };

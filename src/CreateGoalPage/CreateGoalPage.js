@@ -41,7 +41,6 @@ class CreateGoalPage extends Component  {
     handleSubmit = () => {
         let {title, description, punishment, month, day, year} = this.state;
         let deadline = `${year}-${updateDate(month)}-${updateDate(day)}`
-        // console.log(deadline)
 
         let url = 'http://localhost:5000/api/goals';
         let post = {

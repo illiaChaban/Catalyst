@@ -35,19 +35,14 @@ fetchOnClick = event => {
         body: JSON.stringify(payload)
     })
     .then(res => {
-        // console.log('response',res)
         if (res.status === 200) {
             res.text().then(res => {
                 localStorage.setItem('jwt', res)
                 this.setState({isLoggedIn: true})
-                // this.props.history.push('/main/feed')
-                
             })
         }
     })
-    .catch(error => {
-        console.log(error);
-      });
+    .catch(console.log);
 }
 
 render() {

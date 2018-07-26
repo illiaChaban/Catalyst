@@ -1,7 +1,6 @@
 import React from 'react';
 
 let ProfileCheckin = ({checkin}) => {
-    // console.log(checkin)
     let { image, description, created} = checkin;
     let time;
     if (created) time = created.slice(0,10) + ' ' + created.slice(11, 16);

@@ -5,7 +5,6 @@ import CheckInPart from './CheckInPart';
 
 
 let CheckIn = ({checkin}) => {
-    // console.log(checkin)
     let {
         avatar, 
         created, 

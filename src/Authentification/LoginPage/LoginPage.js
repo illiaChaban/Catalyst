@@ -40,10 +40,7 @@ class LoginPage extends Component {
                     this.setState({ isLoggedIn: false })
                 }
             })
-            .catch(error => {
-                console.log(error);
-            });
-
+            .catch(console.log);
     }
 
     render() {

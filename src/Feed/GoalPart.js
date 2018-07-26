@@ -3,9 +3,7 @@ import moment from 'moment';
 
 
 let GoalPart = ({deadline, goalname}) => {
-    // console.log(deadline)
     let time = moment(deadline, 'YYYY-MM-DD-hh:mm').fromNow();
-    // console.log(time);
     return (
         <div className='goal-part'>
             <div className='goalname'>

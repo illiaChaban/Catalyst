@@ -23,7 +23,6 @@ class Feed extends React.Component{
 
     fetchCheckIns() {
         let { friends_checkins } = this.state;
-        console.log('##### FETCHING CHECKING', this.props.friends)
         return fetch('http://localhost:5000/api/feed', {
             method: 'POST',
             headers: {

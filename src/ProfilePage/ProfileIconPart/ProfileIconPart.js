@@ -59,7 +59,6 @@ class ProfileIconPart extends React.Component{
             })
         }
 
-        console.log(user, userId)
 
         return(
             <div className="profile-icon-part">

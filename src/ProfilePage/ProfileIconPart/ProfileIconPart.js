@@ -45,7 +45,7 @@ class ProfileIconPart extends React.Component{
         let addFriend = (userid) => {
             let newFriendsArray = myFriends.map( el => (el.userid.toString()))
             newFriendsArray.push(userid.toString());
-            fetch('http://localhost:5000/addFriend', {
+            fetch('http://localhost:5000/api/addFriend', {
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json'

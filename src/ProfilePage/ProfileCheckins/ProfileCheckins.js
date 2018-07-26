@@ -45,7 +45,7 @@ class ProfileCheckins extends React.Component{
         }
 
         let postCheckin = () => {
-            fetch('http://localhost:5000/postCheckin', {
+            fetch('http://localhost:5000/api/postCheckin', {
                 method: 'POST',
                 headers: {
                     'Content-Type':'application/json'

@@ -27,7 +27,7 @@ class FriendsList extends React.Component{
     handleSubmit = () => {
         let {search} = this.state;
         
-        let url = 'http://localhost:5000/searchFriends';
+        let url = 'http://localhost:5000/api/searchFriends';
         let post = {
             method: 'POST',
             headers: {

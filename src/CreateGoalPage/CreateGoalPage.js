@@ -7,6 +7,12 @@ import punishments from '../lib/punishments';
 import BtnGeneratePunishment from './BtnGeneratePunishment';
 import getRandomPunishment from '../lib/getRandomPunishment';
 
+let errorStyle = {
+    fontSize: '18px',
+    textAlign: 'center'
+}
+
+
 class CreateGoalPage extends Component  {
     constructor(props){
         super(props);
@@ -16,7 +22,8 @@ class CreateGoalPage extends Component  {
             punishment: '',
             month: '',
             day: '',
-            year: ''
+            year: '',
+            error: false,
         }
     }
 
@@ -36,7 +43,7 @@ class CreateGoalPage extends Component  {
         let deadline = `${year}-${updateDate(month)}-${updateDate(day)}`
         // console.log(deadline)
 
-        let url = 'http://localhost:5000/goals';
+        let url = 'http://localhost:5000/api/goals';
         let post = {
             method: 'POST',
             headers: {
@@ -44,16 +51,22 @@ class CreateGoalPage extends Component  {
             },
             body: JSON.stringify({
                 userid: this.props.user.userid,
-                title: title,
-                description: description,
+                title,
+                description,
                 deadline,
-                punishment: punishment
+                punishment
             })
 
         };
 
         fetch(url, post)
-        this.props.history.push('/main/profile-page')      
+        .then( res => {
+            if ( res.status === 200) {
+                this.props.history.push('/main/profile-page')      
+            } else {
+                this.setState({error: true})
+            }
+        })
     }
 
     render (){
@@ -120,6 +133,7 @@ class CreateGoalPage extends Component  {
                         <BtnGeneratePunishment handler={generatePunishmentHandler}/>                
                         <button onClick={this.handleSubmit}>Submit Goal</button>
                     </div>
+                    {this.state.error && <div style={errorStyle}>Check deadline date!</div>}
                 </div>
             </div>
         )

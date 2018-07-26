@@ -1,10 +1,10 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-import { fetchUser, fetchFriendList } from '../../actions/fetch';
+import { fetchUser, fetchMe } from '../../actions/fetch';
 import ProfileIcon from './ProfileIcon';
 import ButtonAddFriend from './ButtonAddFriend';
 import YouAreFriends from './YouAreFriends';
 import LogOutBtn from './LogOutBtn';
+import { updateUserInfo } from '../../actions/dispatch'
 
 
 class ProfileIconPart extends React.Component{
@@ -12,7 +12,6 @@ class ProfileIconPart extends React.Component{
         super(props);
         this.state = {
             user: '',
-            myFriends: []
         }   
     }
 
@@ -24,24 +23,18 @@ class ProfileIconPart extends React.Component{
             .then( user => {
                 this.setState({user})
             })
-            .then( () => {
-                fetchFriendList(this.props.me.userid)
-                .then(myFriends => {
-                    this.setState({myFriends})
-                })
-            })
         }
     }
 
 
 
     render() {
-        let { user, myFriends } = this.state;
-        let { userId, me, history} = this.props;
-        let itsMyFriend = userId ? myFriends.find( friend => friend.userid === userId) : false;
-    
+        let { user } = this.state;
+        let { userId, me, history, myFriends, dispatch} = this.props;
+        let itsMyFriend = userId ? myFriends.find( friendId => friendId === userId.toString()) : false;
+
         let addFriend = (userid) => {
-            let newFriendsArray = myFriends.map( el => (el.userid.toString()))
+            let newFriendsArray = [...myFriends]
             newFriendsArray.push(userid.toString());
             fetch('http://localhost:5000/api/addFriend', {
                 method: 'POST',
@@ -53,19 +46,29 @@ class ProfileIconPart extends React.Component{
                     friendsarray: JSON.stringify(newFriendsArray)
                 })
             })
+            .then( async res => {
+                if (res.status === 200) {
+                    let response = await fetchMe();
+
+                    if (response.status === 200) {
+                        let user = await response.json();
+        
+                        updateUserInfo({dispatch, user })
+                    }
+                }
+            })
         }
 
+        console.log(user, userId)
+
         return(
-
-            // shows log out btn on friends page
-
             <div className="profile-icon-part">
                 {!user || ( history && history.location.pathname === '/main/profile-page') ?
                 <ProfileIcon user={me}/>: 
                 <ProfileIcon user={user}/>}
-                {user && !itsMyFriend && <ButtonAddFriend handler={() => addFriend(user.userid)}/>}
+                {user && !itsMyFriend && userId && <ButtonAddFriend handler={() => addFriend(user.userid)}/>}
                 {user && itsMyFriend && <YouAreFriends/>}
-                {!user && <LogOutBtn props={this.props}/>}
+                {!userId && <LogOutBtn props={this.props}/>}
             </div>
         )
     }

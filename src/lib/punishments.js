@@ -1,6 +1,6 @@
 const punishments = [
     'run around the block in underwear',
-    'buy sushi for all of your Catalyst\'s friends',
+    "buy sushi for all of your Catalyst's friends",
     'go to starbucks and ask to work for food',
     'go to a gas station an wash people\'s cars, no tips',
     'go outside and force people to take your autographs',

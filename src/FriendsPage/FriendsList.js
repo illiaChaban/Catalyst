@@ -3,6 +3,32 @@ import { fetchFriendList } from '../actions/fetch';
 import {Link} from 'react-router-dom';
 import Friend from './Friend';
 
+let styles = {
+    sign: {
+        // paddingLeft: '10px',
+        backgroundColor: '#ff6e6e',
+        color: 'white',
+        fontWeight: 'bold',
+        textShadow: "1px 1px black",
+        height: '25px',
+        textAlign: 'center',
+    },
+    addPadding: {
+        paddingLeft: '10px',
+        paddingRight: '10px'
+    }
+}
+
+let SearchSign = () =>
+    <div style={styles.sign}>
+        Search results:
+    </div>
+
+let YouFollowSign = () => 
+    <div style={styles.sign}>
+        You are following:
+    </div>
+
 class FriendsList extends React.Component{
     constructor(props) {
         super(props);
@@ -54,15 +80,17 @@ class FriendsList extends React.Component{
 
         return(
             <div className="friends-container">
-            <form className="friend-form" >
-                <input 
-                    type="text" 
-                    placeholder="Enter username..." 
-                    onChange={(event) => this.setState({ search:event.target.value })}
-                    onKeyPress={EnterHandler}
-                />
-                <i onClick={this.handleSubmit} className="fas fa-search-plus fa-2x"></i>
-            </form>
+                <form className="friend-form" >
+                    <input 
+                        style={styles.addPadding}
+                        type="text" 
+                        placeholder="Enter username..." 
+                        onChange={(event) => this.setState({ search:event.target.value })}
+                        onKeyPress={EnterHandler}
+                    />
+                    <i onClick={this.handleSubmit} className="fas fa-search-plus fa-2x"></i>
+                </form>
+                { showingUsers ? <SearchSign/> : <YouFollowSign/>}
                 {   
                     (
                         showingUsers ? usersToShow: friends
@@ -72,6 +100,7 @@ class FriendsList extends React.Component{
         )
     }
 }
+
 
 
 export default FriendsList;

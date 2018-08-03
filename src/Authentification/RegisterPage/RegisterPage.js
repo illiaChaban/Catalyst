@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import LogoContainer from '../LogoContainer';
 
+let UseDifEmailWarning = () => 
+    <div className='failed-login-sign'>This email is already in use!</div>
 
 class RegisterPage extends Component {
     constructor(props ){
@@ -11,7 +13,7 @@ class RegisterPage extends Component {
         password:'',
         username:'',
         avatar:'',
-        isLoggedIn: null
+        logInStatus: null
         }
        }
 
@@ -20,32 +22,32 @@ handleSubmit = event => {
     }
 
 fetchOnClick = event => {
-    let baseUrl = 'http://localhost:5000/authentication/register'
-    let payload = {
-        'email': this.state.email,
-        'password': this.state.password,
-        'username': this.state.username,
-        'avatar': this.state.avatar
-    }
+    let baseUrl = 'http://localhost:5000/authentication/register';
+    let { email, password, username, avatar} = this.state;
     fetch(baseUrl, {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+            email, password, username, avatar
+        })
     })
     .then(res => {
         if (res.status === 200) {
             res.text().then(res => {
                 localStorage.setItem('jwt', res)
-                this.setState({isLoggedIn: true})
+                this.setState({logInStatus: true})
             })
+        } else {
+            this.setState({ logInStatus: 'email was used'})
         }
     })
     .catch(console.log);
 }
 
 render() {
+        let { logInStatus } = this.state;
 
         return(
         <div className="loginpage-master-container">
@@ -70,7 +72,8 @@ render() {
                     </ul>
                 </form>
             </div>
-            {this.state.isLoggedIn && <Redirect to='/main/profile-page'/>}
+            {logInStatus === true && <Redirect to='/main/profile-page'/>}
+            {logInStatus === 'email was used' && <UseDifEmailWarning/>}
             <LogoContainer/>
     </div>
     )

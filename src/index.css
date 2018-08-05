@@ -12,6 +12,19 @@ body {
   font-size: 100%;
 }
 
+@media ( min-width: 330px) {
+  html {
+    font-size: 1.15rem;
+
+  }
+}
+
+@media ( min-width: 400px) {
+  html {
+    font-size: 1.3rem;
+  }
+}
+
 ul,li {
   list-style: none;
   padding: 0px;
@@ -29,18 +42,18 @@ h2, h1{
 
 .route-container {
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-color: blue; */
 }
 
-.content-container {
+/* .content-container {
   background-color: white;
-  height: 89vh;
+  height: 100%;
   width: 100vw;
-}
+} */
 .navbar-placeholder {
+  /* position: absolute;
+  bottom: 0; */
   height: 11vh;
   width: 100vw;
   /* background-color: gold; */
@@ -55,14 +68,18 @@ h2, h1{
 }
 
 .navbar ul {
+  height: 2rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 15px 0 15px;
+  margin: 10px 0 15px 0;
 }
 
 .navbar ul li i {
   color: white;
   text-shadow: -4px 3px 2px #c54040, -3px 5px #c74b16;
+  font-size: 2.3rem;
 }
 
 /* Grow */
@@ -168,12 +185,13 @@ li + li {
   justify-content: flex-start;
   margin-top: 20px;
   align-items: center;
+  box-sizing: border-box;
 }
 
-.create-goal-container div {
+.create-goal-container > div {
   /* background-color: aqua; */
-  max-width: 400px;
-  font-size: 185%;
+  font-size: 2.4rem;  
+  padding: 0 15px;
 }
 
 ::-webkit-input-placeholder {
@@ -183,19 +201,30 @@ li + li {
 
 .create-goal-container h3{
   margin: 0;
+  font-size: 2rem;
 }
 
-.create-goal-container input {
+.create-goal-container input, .create-goal-container textarea {
   border: 2px solid #ff6e6e;
   border-radius: 7px;
-  font-size: 65%;
+  font-size: 2rem;
+  height: 2.5rem;
+  width: calc(100% - 14px);
+  padding: 0 5px;
+  margin: 0;
+  font-size: 50%;
+  font-family: 'Karla', sans-serif;
 }
-
 .create-goal-container textarea {
-  border: 2px solid #ff6e6e;
-  border-radius: 7px;
-  font-size: 65%;
+  height: 3rem;
 }
+
+.create-goal-container .date input {
+  width: 24%;
+  font-size: 70%;
+  text-align: center;
+}
+
 
 .create-goal-container button {
   background-color: #ff6e6e;
@@ -210,7 +239,7 @@ li + li {
   border-radius: 5px;
   margin-top: 10px;
   border: 2px solid #ff6e6e;
-  max-width: 150px;;
+  /* max-width: 150px;; */
 
 }
 
@@ -389,11 +418,21 @@ li + li {
 }
 
 .add-friend{
-  border: 1px solid black;
+  border: 1px solid #c54040;
+  box-shadow: 0 0 3px #ff6e6e;
   position: absolute;
   right: 10px;
   border-radius: 5px;
   padding: 0 2px;
+  background-color: #ff6e6e;
+  color: white;
+  text-shadow: 0px 0px 2px #860000;
+
+}
+
+.add-friend button {
+  color: white;
+  text-shadow: 0px 0px 1px #860000;
 }
 
 .add-checkin input{
@@ -433,11 +472,29 @@ li + li {
 
 .create-goal-btns{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .create-goal-btns button{
-  width: 120px;
+  font-size: 1rem;
+  width: 49%;
   height: auto;
+  border: 2px solid #ff6e6e;
+  margin: 0;
+
+}
+
+.sign {
+  background-color: #ff6e6e;
+  color: white;
+  font-weight: bold;
+  text-shadow: -2px 1px 2px black;
+  height: 25px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+.add-padding {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 

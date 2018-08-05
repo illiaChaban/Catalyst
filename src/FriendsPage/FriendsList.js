@@ -3,29 +3,14 @@ import { fetchFriendList } from '../actions/fetch';
 import {Link} from 'react-router-dom';
 import Friend from './Friend';
 
-let styles = {
-    sign: {
-        // paddingLeft: '10px',
-        backgroundColor: '#ff6e6e',
-        color: 'white',
-        fontWeight: 'bold',
-        textShadow: "1px 1px black",
-        height: '25px',
-        textAlign: 'center',
-    },
-    addPadding: {
-        paddingLeft: '10px',
-        paddingRight: '10px'
-    }
-}
 
 let SearchSign = () =>
-    <div style={styles.sign}>
+    <div className='sign'>
         Search results:
     </div>
 
 let YouFollowSign = () => 
-    <div style={styles.sign}>
+    <div className='sign'>
         You are following:
     </div>
 
@@ -82,9 +67,9 @@ class FriendsList extends React.Component{
             <div className="friends-container">
                 <form className="friend-form" >
                     <input 
-                        style={styles.addPadding}
+                        className='add-padding'
                         type="text" 
-                        placeholder="Enter username..." 
+                        placeholder="Search for a friend..." 
                         onChange={(event) => this.setState({ search:event.target.value })}
                         onKeyPress={EnterHandler}
                     />

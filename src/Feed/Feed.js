@@ -42,6 +42,7 @@ class Feed extends React.Component{
         let { friends_checkins } = this.state;
         return(
             <div>
+                <div className='sign' style={{marginBottom: '5px'}}>Feed:</div>
                 {friends_checkins.map( (checkin, i) => <CheckIn key={i} checkin={checkin}/>)}
             </div>
         )

@@ -77,47 +77,50 @@ class CreateGoalPage extends Component  {
         }
 
         return (
-            <div className="create-goal-container">
             <div>
-                <li><h1>Create Goal</h1></li>
-                <li> 
-                    <h3>Title:</h3>
-                    <input 
-                        className='goal-input'
-                        onChange={(event) => this.setState({ title:event.target.value }) } 
-                        type="text" required/>
-                </li>
-                
-                <li>
-                    <h3>Description:</h3>
-                    <textarea
-                        className='goal-input'                        
-                        onChange={(event) => this.setState({ description:event.target.value }) } 
-                        type="text" required>
-                    </textarea>
+                <div className="sign">Create Goal</div>
+                <div className="create-goal-container">
+                <div>
+                    <li> 
+                        <h3>Title:</h3>
+                        <input 
+                            className='goal-input'
+                            onChange={(event) => this.setState({ title:event.target.value }) } 
+                            type="text" required/>
                     </li>
-                <li>
-                    <h3>Deadline:</h3>
-                    <div className="date">
-                        <input 
-                            className='date-input'
-                            placeholder='mm'
-                            onChange={(event) => this.setState({ month:event.target.value }) } 
-                            type='number' min="1" max="12" required /> 
-                        <label>/</label>
-                        <input 
-                            className='date-input'                    
-                            placeholder='dd'
-                            onChange={(event) => this.setState({ day:event.target.value }) } 
-                            type='number' min="1" max="31" required />
-                        <label>/</label>
-                        <input 
-                            className='date-input'                        
-                            placeholder='yyyy'
-                            onChange={(event) => this.setState({ year:event.target.value }) } 
-                            type='number' min="2018" max="2200" required /> 
-                    </div>
+                    
+                    <li>
+                        <h3>Description:</h3>
+                        <textarea
+                            className='goal-input'                        
+                            onChange={(event) => this.setState({ description:event.target.value }) } 
+                            type="text" required>
+                        </textarea>
                     </li>
+
+                    <li>
+                        <h3>Deadline:</h3>
+                        <div className="date">
+                            <input 
+                                className='date-input'
+                                placeholder='mm'
+                                onChange={(event) => this.setState({ month:event.target.value }) } 
+                                type='number' min="1" max="12" required /> 
+                            <label>/</label>
+                            <input 
+                                className='date-input'                    
+                                placeholder='dd'
+                                onChange={(event) => this.setState({ day:event.target.value }) } 
+                                type='number' min="1" max="31" required />
+                            <label>/</label>
+                            <input 
+                                className='date-input'                        
+                                placeholder='yyyy'
+                                onChange={(event) => this.setState({ year:event.target.value }) } 
+                                type='number' min="2018" max="2200" required /> 
+                        </div>
+                    </li>
+
                     <li>
                         <h3>Punishment:</h3>
                         <textarea
@@ -128,6 +131,7 @@ class CreateGoalPage extends Component  {
                             value={this.state.punishment}>
                         </textarea>
                     </li>
+                    
                     <div className='create-goal-btns'>
                         <BtnGeneratePunishment handler={generatePunishmentHandler}/>                
                         <button onClick={this.handleSubmit}>Submit Goal</button>
@@ -135,6 +139,7 @@ class CreateGoalPage extends Component  {
                     {this.state.error && <div style={errorStyle}>Check deadline date!</div>}
                 </div>
             </div>
+        </div>
         )
     }
     

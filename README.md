@@ -1,5 +1,5 @@
 # Catalyst - front end
-[check out the server-side](https://github.com/Catalyst-DC/catalyst-server)
+[check out the server-side](https://github.com/illiaChaban/catalyst-server)
 
 
 ## Overview:

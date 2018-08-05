@@ -21,7 +21,7 @@ class SelectGoal extends React.Component{
         let { goals } = this.state;
 
         return (
-            <select onChange={handler}>
+            <select onChange={handler} style={{width: '30%'}}>
                 <option value=''>Choose goal</option>
                 {goals.length && 
                     goals.map( (goal, i) => <Option goal={goal} key={i}/>)

@@ -7,11 +7,6 @@ let Friend = ({friend}) => {
             <ul>
                 <li><img src={friend.avatar} alt="user"/></li>
                 <li><span>{friend.username}</span></li>
-                <li><i 
-                    className="fas fa-angle-right fa-2x" 
-                    id='friend-list-arrow'>
-                    </i>
-                </li>
             </ul>
         </div> 
     )

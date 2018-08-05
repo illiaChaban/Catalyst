@@ -4,6 +4,7 @@ let SubmitBtnCheckIn = ({handlers}) => {
     let { postCheckin, toggleInput, resetNewCheckin } = handlers;
     return (
         <button
+            style={{width: '20%'}}
             onClick={() => {
                 postCheckin();
                 toggleInput();

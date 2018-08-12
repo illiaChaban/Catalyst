@@ -6,7 +6,7 @@ let Friend = ({friend}) => {
         <div className='friend-container'>
             <ul>
                 <li><img src={friend.avatar} alt="user"/></li>
-                <li><span>{friend.username}</span></li>
+                <li class='friend-name'><span>{friend.username}</span></li>
             </ul>
         </div> 
     )

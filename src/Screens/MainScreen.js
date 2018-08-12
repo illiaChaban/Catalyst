@@ -14,11 +14,7 @@ let MainScreen = () => {
                 <Route exact path='/main/create-goal' component={CreateGoalPage} />
                 <Route exact path='/main/profile-page' component={ProfilePage} />
                 <Route exact path='/main/friends' component={FriendsPage} />
-                <Route exact path='/main/friends/:userid' render={ (props) => {
-                    let profileUserId = props.match.params.userid
-                    return <ProfilePage profileUserId={profileUserId}/>
-                }} />
-
+                <Route exact path='/main/friends/:userid' component={ProfilePage} />
             </Switch>
             <div className="navbar-placeholder"></div>
             <Navbar/>

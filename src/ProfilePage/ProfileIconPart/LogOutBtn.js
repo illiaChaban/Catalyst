@@ -2,22 +2,27 @@ import React from 'react';
 import { Redirect } from 'react-router-dom'
 
 class LogOutBtn extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-            logOut: false,
-        }
+    // constructor(props){
+    //     super(props);
+    //     this.state={
+    //         logOut: false,
+    //     }
+    // }
+
+    state = {
+        logOut: false
     }
 
     render() {
         return (
-            <div className='add-friend'>
-                <button onClick={()=> {
-                    localStorage.jwt = '';
-                    this.setState({logOut: true})
-                }}>Log Out</button>
+            <button className='main-btn'
+                    onClick={()=> {
+                        localStorage.jwt = '';
+                        this.setState({logOut: true})
+            }}>
+                Log Out
                 {this.state.logOut && <Redirect to='/'/>}
-            </div>
+            </button>
         )
     }
 }

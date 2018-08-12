@@ -72,4 +72,14 @@ export let fetchCheckins = (userId) =>
     })
     .then(res => res.json());
 
-
+export let fetchUpdateFriends = (userid, newFriendsArray) =>
+    fetch('http://localhost:5000/api/updateFriends', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+            userid: userid,
+            friendsarray: JSON.stringify(newFriendsArray)
+        })
+    })

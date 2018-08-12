@@ -2,9 +2,10 @@ import React from 'react';
 import { fetchUser, fetchMe } from '../../actions/fetch';
 import ProfileIcon from './ProfileIcon';
 import ButtonAddFriend from './ButtonAddFriend';
-import YouAreFriends from './YouAreFriends';
+import ButtonDeleteFriend from './ButtonDeleteFriend';
 import LogOutBtn from './LogOutBtn';
-import { updateUserInfo } from '../../actions/dispatch'
+import { updateFriends } from '../../actions/dispatch';
+import { fetchUpdateFriends } from '../../actions/fetch';
 
 
 class ProfileIconPart extends React.Component{
@@ -12,11 +13,15 @@ class ProfileIconPart extends React.Component{
         super(props);
         this.state = {
             user: '',
+            redirectToProfile: false,
         }   
     }
 
     componentDidUpdate(prevProps){
-        if ( prevProps.userId 
+        let { me, userId } = this.props;
+        // it's NOT user's page
+        if ( 
+            this.props.userId 
             && prevProps !== this.props
         ) {
             fetchUser(this.props.userId)
@@ -24,50 +29,36 @@ class ProfileIconPart extends React.Component{
                 this.setState({user})
             })
         }
+
+        // it's user's page
+        if ( userId && userId === me.userid.toString() ) {
+            this.props.history.replace('/main/profile-page')
+        }
+        if ( !userId && prevProps !== this.props ) this.setState({ user: { ...me}})
+
+    }
+    
+    updateFriend(userid, action) {
+        let { me, myFriends, dispatch } = this.props;
+        let newFriendsArray = action === 'add' ?
+            [...myFriends, userid.toString()] :
+            myFriends.filter( x => x !== userid.toString());
+        fetchUpdateFriends(me.userid, newFriendsArray)
+        .then( res => res.status === 200 && updateFriends({dispatch, friends: newFriendsArray}))
     }
 
-
-
     render() {
-        let { user } = this.state;
-        let { userId, me, history, myFriends, dispatch} = this.props;
+        let { user, redirectToProfile } = this.state;
+        let { userId, me, history, myFriends } = this.props;
         let itsMyFriend = userId ? myFriends.find( friendId => friendId === userId.toString()) : false;
-
-        let addFriend = (userid) => {
-            let newFriendsArray = [...myFriends]
-            newFriendsArray.push(userid.toString());
-            fetch('http://localhost:5000/api/addFriend', {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify({
-                    userid: me.userid,
-                    friendsarray: JSON.stringify(newFriendsArray)
-                })
-            })
-            .then( async res => {
-                if (res.status === 200) {
-                    let response = await fetchMe();
-
-                    if (response.status === 200) {
-                        let user = await response.json();
-        
-                        updateUserInfo({dispatch, user })
-                    }
-                }
-            })
-        }
-
+        let itsMe =  user.userid === me.userid || history.location.pathname === '/main/profile-page';
 
         return(
             <div className="profile-icon-part">
-                {!user || ( history && history.location.pathname === '/main/profile-page') ?
-                <ProfileIcon user={me}/>: 
-                <ProfileIcon user={user}/>}
-                {user && !itsMyFriend && userId && <ButtonAddFriend handler={() => addFriend(user.userid)}/>}
-                {user && itsMyFriend && <YouAreFriends/>}
-                {!userId && <LogOutBtn props={this.props}/>}
+                <ProfileIcon user={user}/>
+                {!itsMe && !itsMyFriend && <ButtonAddFriend handler={() => this.updateFriend(user.userid, 'add')}/>}
+                {!itsMe && itsMyFriend && <ButtonDeleteFriend handler={() => this.updateFriend(user.userid, 'delete')}/>}
+                {itsMe && <LogOutBtn/>}
             </div>
         )
     }

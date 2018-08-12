@@ -77,9 +77,12 @@ class FriendsList extends React.Component{
                 </form>
                 { showingUsers ? <SearchSign/> : <YouFollowSign/>}
                 {   
-                    (
-                        showingUsers ? usersToShow: friends
-                    ).map( (friend,i) => <Link key={friend.userid} to={`/main/friends/${friend.userid}`}><Friend  friend={friend}/></Link>) 
+                    (showingUsers ? usersToShow: friends)
+                    .map( (friend,i) => 
+                        <Link key={friend.userid} 
+                              to={`/main/friends/${friend.userid}`}>
+                              <Friend  friend={friend}/>
+                        </Link>) 
                 } 
             </div>
         )

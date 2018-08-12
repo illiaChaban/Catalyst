@@ -32,7 +32,7 @@ class ProfilePage extends Component{
 export default connect(
     (state, props) => ({ 
         me: state.user,
-        profileUserId: props.profileUserId,
+        profileUserId: props.match.params.userid,
         history: props.history,
         myFriends: state.friends,
     })
